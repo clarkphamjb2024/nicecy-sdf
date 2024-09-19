@@ -1,0 +1,111 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Hotel>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<div class="transition transition-2 is-active"></div>
+<section class="section mb-0" id="d-heading">
+	<div class="container px-0 px-sm-3 relative">
+		<div class="row relative">
+			<div class="col-7 pl-0 big-image">
+				<div class="bg-image" id="d1"></div>
+			</div>
+			<div class="col-5">
+				<div class="row relative">
+					<div class="col-12 mb-1 small-image">
+						<div class="bg-image" id="d2"></div>
+					</div>
+					<div class="col-12 small-image">
+						<div class="bg-image" id="d3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div>
+		<div class="container">
+			<div class="extend-menu">
+				<div class="tab mx-auto">
+					<ul class="navbar-nav d-flex flex-row justify-content-start flex-grow-0 pe-3">
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#overview">Giới thiệu</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#rooms">Chọn phòng</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#location">Vị trí</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="container">
+	<section class="section" id="overview">
+		<div class="d-flex flex-wrap justify-content-center" style="gap: 2rem;">
+			<div class="overview-detail">
+				<h2 class="mt-3 pb-4">@Model.HotelName</h2>
+				<div>
+					<p>@Model.Description</p>
+				</div>
+				<div class="overview-convenient pt-5">
+					<div class="mb-4">
+						<h4>Tiện nghi được ưu chuộng nhất</h4>
+					</div>
+					<div class="row">
+						@foreach (var item in Model.Features)
+						{
+							<div class="d-flex flex-row col-6 col-sm-6 col-md-4 mb-4">
+								<img src="@item.Icon.Url()" />
+								<span>@item.FeatureName</span>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="overview-map">
+				<div class="map">
+					<a target="_blank" href="@Model.MapUrl">
+						<span>
+							<img src="@Model.MapPhoto.Url()" />
+						</span>
+					</a>
+				</div>
+				<br />
+				<span>@Model.MapDescription</span>
+			</div>
+		</div>
+	</section>
+</div>
+
+<div class="container mb-4">
+	@Html.GetGridHtml(Model, "bodyText", "bootstrap3-rawrow")
+	<!--<div class="hbe-bws"> <section id="hbe-bws-page"><div id="hbe-bws-wrapper"> </div></section></div><link type="text/css" rel="stylesheet" href="https://book.securebookings.net/css/app.css" /><script type="text/javascript" src="https://book.securebookings.net/js/widget.all.js"></script><script type="text/javascript" src="https://book.securebookings.net/widgetCustomize?lang=vi&widgetType=Widget&id=821fb7fa-83b8-1545383631-47bb-a5f9-f4ba6f17f5ef&ajax=true"></script>-->
+</div>
+
+<div class="container">
+	<section class="section" id="around">
+		<div class="d-flex flex-wrap justify-content-start" style="gap: 2rem;">
+			<div class="overview-around">
+				<h5>M Village Hotel Tao Đàn Park có gì vui quanh đây?</h5>
+				<p>Một khách sạn có gu tọa lạc tại gần quận 1, hoàn hảo cho những du khách trẻ đang tìm kiếm một kỳ nghỉ sôi động và phong cách.</p>
+			</div>
+			<div class="overview-destination">
+				<div>
+					<h5><i class="fa-solid fa-location-dot"></i> Địa điểm xung quanh</h5>
+				</div>
+				<div>
+					<div class="house-guide__nearby__items-list"><div class="house-guide__nearby__item"><span class="mv-text">Saigon Grill Rooftop Restaurant</span><span class="mv-text">0.65 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">THE WISELANDS Coffee</span><span class="mv-text">1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Bún Ốc Riêu Cua Thanh Hải</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">SOL Kitchen &amp; Bar</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Chợ Bến Thành</span><span class="mv-text">1.5 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Phố Đi Bộ Bùi Viện</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">NOIR. Ăn trong bóng tối</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Saigon Centre</span><span class="mv-text">2.1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Acoustic Bar - Ngô Thời Nhiệm</span><span class="mv-text">2.2 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Vincom Đồng Khởi</span><span class="mv-text">2.2 km</span></div></div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+

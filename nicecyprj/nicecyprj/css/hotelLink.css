@@ -1,0 +1,189 @@
+.bws-room-general {
+   font-family: "Be Vietnam Pro", sans-serif !important;
+}
+
+   .bws-room-general p {
+      font-size: 14px !important;
+   }
+
+.rate-plan-wrapper {
+   font-family: "Be Vietnam Pro", sans-serif !important;
+}
+
+.hbe-bws #hbe-bws-page p {
+   font-size: 15px !important;
+}
+
+.room-price-row {
+   font-size: 21px !important;
+   font-weight: 600 !important;
+   line-height: 32px !important;
+   color: rgb(255, 117, 38) !important;
+   text-align: left !important;
+   margin-right: 4px !important;
+   min-width: auto !important;
+}
+
+.icon_feature.class {
+   font-size: 22px !important;
+   color: var(--primary-color) !important;
+}
+
+.bws-price-night {
+   font-size: 14px !important;
+   font-weight: 400 !important;
+   line-height: 32px !important;
+   color: rgb(255, 117, 38) !important;
+   text-align: left !important;
+   margin-right: 4px !important;
+   min-width: auto !important;
+}
+
+.hbe-bws #hbe-bws-page ul {
+   display: flex !important;
+   gap: 10px !important;
+   flex-direction: column !important;
+}
+
+   .hbe-bws #hbe-bws-page ul.bws-disc-inline li:before {
+      content: none !important;
+   }
+
+   .hbe-bws #hbe-bws-page ul.bws-disc-inline li {
+      border-radius: 76px !important;
+      background-color: rgb(253, 246, 242) !important;
+      padding: 5px 10px !important;
+      display: flex !important;
+      margin-right: 8px !important;
+      -webkit-box-align: center !important;
+      align-items: center !important;
+      font-size: 13px !important;
+   }
+
+.hbe-bws
+#hbe-bws-page
+#hbe-bws-wrapper
+.bws-rooms-list
+ul.bws-disc-inline.room-name-desc
+li.bws-green-color,
+.hbe-bws #hbe-bws-page #hbe-bws-wrapper .bws-green-color,
+.hbe-bws #hbe-bws-page #hbe-bws-wrapper .bws-green-color-free,
+.hbe-bws
+#hbe-bws-page
+#hbe-bws-wrapper
+.body-rooms-list
+.rate-plan-wrapper
+.rate-plan
+.highlights
+div.cancellation-policy > span.bws-green-color-free
+span.bws-color-element.bws-icon-info,
+.hbe-bws
+#hbe-bws-page
+#hbe-bws-wrapper
+.body-rooms-list
+.bws-room-general
+.room-type
+.room-type-desc
+.highlighted-icon
+span {
+   color: var(--primary-color) !important;
+}
+
+.hbe-bws
+#hbe-bws-page
+.body-rooms-list
+.bws-room-general
+.room-type
+.room-type-img
+img {
+   border-top-left-radius: 12px;
+   border-top-right-radius: 12px;
+   object-fit: cover;
+}
+
+.hbe-bws #hbe-bws-page .bws-button {
+   height: auto;
+   float: none;
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-wrapper button.book-now-available,
+.hbe-bws #hbe-bws-wrapper #instant_discount {
+   color: #ffffff !important;
+   background-color: var(--primary-color) !important;
+}
+
+.total-price {
+   font-family: "Be Vietnam Pro" !important;
+   font-total-price: 500;
+}
+
+.hbe-bws #hbe-bws-page .total-price .bws-price {
+   font-size: 21px !important;
+   font-weight: 700 !important;
+   line-height: 32px !important;
+   color: rgb(255, 117, 38) !important;
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-page .total-price label {
+   font-family: "Be Vietnam Pro" !important;
+   font-weight: bold;
+}
+
+.ui-datepicker-group {
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-page #hbe-bws-wrapper div.search-filter.divider-background {
+   background-color: rgb(245 245 243) !important;
+   color: #000000;
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-page #hbe-bws-wrapper .search-filter label.bws-viewing-msg {
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-page select {
+   font-family: "Be Vietnam Pro" !important;
+}
+
+.hbe-bws #hbe-bws-page .body-rooms-list .room-type-wrapper .bws-room-box-bg {
+   background-color: rgb(245 245 243) !important;
+   border-top-left-radius: 12px !important;
+   border-top-right-radius: 12px !important;
+   border: none !important;
+}
+
+.hbe-bws
+#hbe-bws-page
+.body-rooms-list
+.room-type
+.room-type-desc
+.room-type-name {
+   font-size: 20px !important;
+   line-height: 1;
+}
+
+.hbe-bws #hbe-bws-page .body-rooms-list .rate-plan-wrapper .rate-plan-name {
+   font-size: 14px !important;
+}
+
+.hbe-bws
+#hbe-bws-page
+#hbe-bws-wrapper
+.bws-rooms-list
+.search-filter.bws-search-filter {
+   background-color: #fbfbfa !important;
+}
+
+.qtip-content {
+   font-family: 'Be Vietnam Pro' !important;
+   font-size: 11px !important;
+}
+
+
+.hbe-bws #hbe-bws-page .body-rooms-list .total-price-wrapper {
+   padding-top: 60px !important;
+}

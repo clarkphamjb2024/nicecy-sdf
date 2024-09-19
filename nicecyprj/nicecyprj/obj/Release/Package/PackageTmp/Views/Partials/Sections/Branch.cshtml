@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	Layout = null;
+	// Get basic design settings from the homepage
+	var home = (Home)Model.Root();
+}
+<style>
+	#branch {
+		background-image: url(@home.CncBackground.FirstOrDefault().Url());
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 550px;
+		margin-top: 100px;
+	}
+				</style>
+<section id="branch" class="section">
+	<div class="container">
+		<div class="branch-heading">
+			<h3>@home.CncHeader</h3>
+		</div>
+		<div class="content">
+			<p>
+				@home.CncDescription
+			</p>
+		</div>
+	</div>
+</section>

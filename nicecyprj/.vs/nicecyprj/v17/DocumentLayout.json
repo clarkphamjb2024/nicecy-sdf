@@ -1,0 +1,280 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\partials\\sections\\destinations.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\partials\\sections\\destinations.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|c:\\users\\clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hotellink.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\css\\hotellink.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|c:\\users\\clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\hotel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\hotel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\macropartials\\latestpublishedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\macropartials\\latestpublishedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\partials\\sections\\portfolio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\partials\\sections\\portfolio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\partials\\grid\\bootstrap3-rawrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\partials\\grid\\bootstrap3-rawrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\views\\partials\\sections\\branch.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\views\\partials\\sections\\branch.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hover.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\css\\hover.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\button.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\css\\button.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\scripts\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{470B390E-456D-4B72-9C35-95864D04D2B9}|nicecyprj\\nicecyprj.csproj|solutionrelative:nicecyprj\\scripts\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 158,
+          "SelectedChildIndex": 25,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{5726b0e3-1012-5233-81f9-d1fad48e7a56}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Home.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Home.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Home.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Home.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Home.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T13:12:09.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hotel.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Hotel.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Hotel.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Hotel.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Hotel.cshtml",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAgwFAAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T13:11:29.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LatestPublishedHotels.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\MacroPartials\\LatestPublishedHotels.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\MacroPartials\\LatestPublishedHotels.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\MacroPartials\\LatestPublishedHotels.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\MacroPartials\\LatestPublishedHotels.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T13:13:58.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Bootstrap3-RawRow.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Grid\\Bootstrap3-RawRow.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Partials\\Grid\\Bootstrap3-RawRow.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Grid\\Bootstrap3-RawRow.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Partials\\Grid\\Bootstrap3-RawRow.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T12:49:42.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Portfolio.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Portfolio.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Partials\\Sections\\Portfolio.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Portfolio.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Partials\\Sections\\Portfolio.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T12:49:35.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Branch.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Branch.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Partials\\Sections\\Branch.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Branch.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Partials\\Sections\\Branch.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T12:48:53.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "hover.css",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hover.css",
+              "RelativeDocumentMoniker": "nicecyprj\\css\\hover.css",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hover.css",
+              "RelativeToolTip": "nicecyprj\\css\\hover.css",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAC0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-18T12:44:02.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "button.css",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\button.css",
+              "RelativeDocumentMoniker": "nicecyprj\\css\\button.css",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\button.css",
+              "RelativeToolTip": "nicecyprj\\css\\button.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAC8BQIA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-18T12:18:50.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\style.css",
+              "RelativeDocumentMoniker": "nicecyprj\\css\\style.css",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\style.css",
+              "RelativeToolTip": "nicecyprj\\css\\style.css",
+              "ViewState": "AQIAAIACAAAAAAAAAAArwJECAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-18T12:08:00.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Destinations.cshtml",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Destinations.cshtml",
+              "RelativeDocumentMoniker": "nicecyprj\\Views\\Partials\\Sections\\Destinations.cshtml",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\Views\\Partials\\Sections\\Destinations.cshtml",
+              "RelativeToolTip": "nicecyprj\\Views\\Partials\\Sections\\Destinations.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-18T12:04:09.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "hotelLink.css",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hotelLink.css",
+              "RelativeDocumentMoniker": "nicecyprj\\css\\hotelLink.css",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\css\\hotelLink.css",
+              "RelativeToolTip": "nicecyprj\\css\\hotelLink.css",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAAALsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-19T02:38:38.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "script.js",
+              "DocumentMoniker": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\scripts\\script.js",
+              "RelativeDocumentMoniker": "nicecyprj\\scripts\\script.js",
+              "ToolTip": "C:\\Users\\Clark\\source\\repos\\nicecyprj\\nicecyprj\\scripts\\script.js",
+              "RelativeToolTip": "nicecyprj\\scripts\\script.js",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAJMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-09-18T12:08:56.99Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

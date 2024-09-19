@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+<section id="portfolio" class="section">
+	<div class="">
+		<div class="section-heading container">
+			<h3 class="heading">Khám phá các Village mới</h3>
+		</div>
+		<div class="container">
+			<div class="owl-two owl-carousel d-flex flex-row justify-content-between" style="justify-content: center;">
+				@Html.GetGridHtml(Model, "nhtBodyText", "bootstrap3-rawrow")
+			</div>
+		</div>
+
+	</div>
+</section>

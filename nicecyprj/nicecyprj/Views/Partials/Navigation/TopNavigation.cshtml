@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@using Umbraco.Core.PropertyEditors
+@inherits UmbracoViewPage
+@{
+	Layout = null;
+	// Get basic design settings from the homepage
+	var home = (Home)Model.Root();
+
+}
+<header class="">
+	<nav class="navbar header-nav navbar-expand-lg fixed-top main-header">
+		<div class="container">
+			<a class="navbar-brand me-auto header-logo" href="@home.Url">
+				<span class="header-logo">
+					<img class="logo-w" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo" title="logo"
+						  placeholder="blur">
+					<img class="logo-b" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo" title="logo"
+						  placeholder="blur">
+				</span>
+			</a>
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+				  aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<a class="navbar-brand me-auto header-logo" href="@home.Url">
+						<span class="header-logo">
+							<img class="logo-w" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo"
+								  placeholder="blur">
+							<img class="logo-b" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo"
+								  placeholder="blur">
+						</span>
+					</a>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="/khach-san">Tất Cả Chi Nhánh</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#">Về Chúng Tôi</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-lg-2" href="#">Liên Hệ</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			@*<a href="#" class="news-tag-button">Mới</a>*@
+			<a href="#" class="login-button"><i class="fa-regular fa-user"></i></i></i></a>
+			<a href="#" class="login-button"><img src="~/assets/vietnam.png" /></i></i></a>
+			<a href="#" class=""><img src="~/assets/united-kingdom.png" /></i></i></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+					  data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</nav>
+</header>

@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+<div class="transition transition-1 is-active"></div>
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+<!-- *  *  *  *  SwiperSlider   *  *  *  *  * -->
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+@Html.Partial("~/views/partials/Sections/SectionSwiperSlider.cshtml")
+
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+<!-- *  *  *  * Gallery *  *  *  *  * -->
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+@Html.Partial("~/views/partials/Sections/Gallery.cshtml")
+
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+<!-- *  *  *  * Destinations *  *  *  *  * -->
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+@Html.Partial("~/views/partials/Sections/Destinations.cshtml")
+
+
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+<!-- *  *  *  * Prototype *  *  *  *  * -->
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+@Html.Partial("~/views/partials/Sections/Branch.cshtml")
+
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+<!-- *  *  *  * Portfolio *  *  *  *  * -->
+<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+
+@Html.Partial("~/views/partials/Sections/Portfolio.cshtml")
