@@ -55,11 +55,26 @@ window.onload = () => {
 
 $(document).ready(function () {
 	//replaceSpecialCharacters();
+	$('#imgCarouselModal').modal()
+	var myCarousel = document.querySelector('#carouselExampleDark')
+	var carousel = new bootstrap.Carousel(myCarousel)
 
 	var path = window.location.href;
 	if (path !== 'https://localhost:44372/') {
 		$('body').addClass('fixed-header')
+	}	
+	function getParam(param) {
+		return new URLSearchParams(window.location.search).get(param);
 	}
+	var city = getParam('diem_den');
+	function setSelectValue(id, val) {
+		document.getElementById(id).value = val;
+	}
+
+	if (city !== null) {
+		setSelectValue('chooseCategory', city);
+	}
+	
 
 	$('.owl-one').owlCarousel({
 		animateOut: 'fadeOut',

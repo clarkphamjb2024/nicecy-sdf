@@ -48,19 +48,19 @@
 <!-- Room Listing -->
 <div class="recent-listing mt-3">
 	<div class="container">
-		<div class="row p-3">
-			<div class="col-lg-9">
+		<div class="row p-3 d-flex justify-content-center">
+			<div class="col-lg-10">
 				@foreach (var item in Model.Data)
 				{
-					<div class="listing-item row">
-						<div class="left-image col-lg-4 p-0">
+					<div class="listing-item row cursor-pointer" onclick="location.href='@item.Url'">
+						<div class="left-image col-lg-5 p-0">
 							<div class="ecommerce-gallery">
 								<div class="row no-gutters">
 									<div class="col-12 mb-1">
 										<div class="lightbox" data-mdb-lightbox-init>
 											<img src="@item.ImgUrl"
 												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100" />
+												  class="ecommerce-gallery-main-img active w-100 object-fit-cover" />
 										</div>
 									</div>
 									@if (item.ImgUrls.Count() == 4)
@@ -115,7 +115,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-lg-3 d-flex flex-column justify-content-end align-items-end price-container p-4">
+						<div class="col-lg-2 d-flex flex-column justify-content-end align-items-end price-container p-4">
 							<div class="mt-4">
 								<button class="primary-btn search-button choose-room" onclick="location.href='@item.Url'">Đặt Ngay</button>
 							</div>
@@ -123,12 +123,6 @@
 					</div>
 				}
 
-			</div>
-			<div class="col-lg-3">
-				<div class="row map-img">
-					<span class=" lazy-load-image-background blur lazy-load-image-loaded" style="color: transparent; display: inline-block;"><img class="img-fluid" src="../assets/staticmap.png" alt="map-view"></span>
-					<button class="btn">Xem bản đồ</button>
-				</div>
 			</div>
 		</div>
 	</div>

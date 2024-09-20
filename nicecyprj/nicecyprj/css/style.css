@@ -1021,7 +1021,12 @@ img {
 
 /* Detail */
 
-
+/* Show the image on mobile screens */
+@media screen and (max-width: 767px) {
+	.big-image img {
+		width: 95%;
+	}
+}
 @media(min-width: 991px) {
 	#d-heading {
 		margin-top: 100px;
@@ -1038,13 +1043,14 @@ img {
 			border-radius: 5px;
 		}
 
-	.big-image {
-		height: 400px;
-		padding-right: 0px;
+	.big-image img {
+		height: 404px;
+		width: 100%;
 	}
 
-	.small-image {
+	.small-image img {
 		height: 200px;
+		width: 100%;
 	}
 
 	#d1 {

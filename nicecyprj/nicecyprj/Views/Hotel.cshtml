@@ -2,29 +2,85 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = "Master.cshtml";
+	List<string> ImgUrls = new List<string>();
+	foreach (var item in Model.Photos)
+	{
+		ImgUrls.Add(item.Url());
+	}
 }
 
 <div class="transition transition-2 is-active"></div>
 <section class="section mb-0" id="d-heading">
 	<div class="container px-0 px-sm-3 relative">
-		<div class="row relative">
-			<div class="col-7 pl-0 big-image">
-				<div class="bg-image" id="d1"></div>
-			</div>
-			<div class="col-5">
-				<div class="row relative">
-					<div class="col-12 mb-1 small-image">
-						<div class="bg-image" id="d2"></div>
-					</div>
-					<div class="col-12 small-image">
-						<div class="bg-image" id="d3"></div>
+		<div class="row g-1 cursor-pointer" data-bs-toggle="modal" data-bs-target="#imgCarouselModal" >
+			@if (ImgUrls.Count() >= 3)
+			{
+				<div class="col-7 pl-0 big-image">
+					<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[0]" />
+				</div>
+				<div class="col-5">
+					<div class="row relative">
+						<div class="col-12 mb-1 small-image">
+							<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[1]" />
+						</div>
+						<div class="col-12 small-image">
+							<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[2]" />
+						</div>
 					</div>
 				</div>
-			</div>
+			}
 		</div>
 	</div>
 </section>
+<!-- modal -->
+<div class="modal fade" id="imgCarouselModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body">
+				<!-- carousel -->
+				<div id="carouselExampleDark" class="carousel carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
 
+					<div class="carousel-inner">
+						<div class="carousel-item active" data-bs-interval="10000">
+							<img src="@ImgUrls[0]" class="d-block w-100">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Tổng quan</h5>
+							</div>
+						</div>
+						<div class="carousel-item" data-bs-interval="2000">
+							<img src="@ImgUrls[1]" class="d-block w-100">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Tổng quan</h5>
+							</div>
+						</div>
+						<div class="carousel-item" data-bs-interval="2000">
+							<img src="@ImgUrls[2]" class="d-block w-100">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Tổng quan</h5>
+							</div>
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <section class="section">
 	<div>
 		<div class="container">
@@ -91,21 +147,21 @@
 </div>
 
 @*<div class="container">
-	<section class="section" id="around">
-		<div class="d-flex flex-wrap justify-content-start" style="gap: 2rem;">
-			<div class="overview-around">
-				<h5>M Village Hotel Tao Đàn Park có gì vui quanh đây?</h5>
-				<p>Một khách sạn có gu tọa lạc tại gần quận 1, hoàn hảo cho những du khách trẻ đang tìm kiếm một kỳ nghỉ sôi động và phong cách.</p>
-			</div>
-			<div class="overview-destination">
-				<div>
-					<h5><i class="fa-solid fa-location-dot"></i> Địa điểm xung quanh</h5>
+		<section class="section" id="around">
+			<div class="d-flex flex-wrap justify-content-start" style="gap: 2rem;">
+				<div class="overview-around">
+					<h5>M Village Hotel Tao Đàn Park có gì vui quanh đây?</h5>
+					<p>Một khách sạn có gu tọa lạc tại gần quận 1, hoàn hảo cho những du khách trẻ đang tìm kiếm một kỳ nghỉ sôi động và phong cách.</p>
 				</div>
-				<div>
-					<div class="house-guide__nearby__items-list"><div class="house-guide__nearby__item"><span class="mv-text">Saigon Grill Rooftop Restaurant</span><span class="mv-text">0.65 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">THE WISELANDS Coffee</span><span class="mv-text">1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Bún Ốc Riêu Cua Thanh Hải</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">SOL Kitchen &amp; Bar</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Chợ Bến Thành</span><span class="mv-text">1.5 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Phố Đi Bộ Bùi Viện</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">NOIR. Ăn trong bóng tối</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Saigon Centre</span><span class="mv-text">2.1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Acoustic Bar - Ngô Thời Nhiệm</span><span class="mv-text">2.2 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Vincom Đồng Khởi</span><span class="mv-text">2.2 km</span></div></div>
+				<div class="overview-destination">
+					<div>
+						<h5><i class="fa-solid fa-location-dot"></i> Địa điểm xung quanh</h5>
+					</div>
+					<div>
+						<div class="house-guide__nearby__items-list"><div class="house-guide__nearby__item"><span class="mv-text">Saigon Grill Rooftop Restaurant</span><span class="mv-text">0.65 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">THE WISELANDS Coffee</span><span class="mv-text">1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Bún Ốc Riêu Cua Thanh Hải</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">SOL Kitchen &amp; Bar</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Chợ Bến Thành</span><span class="mv-text">1.5 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Phố Đi Bộ Bùi Viện</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">NOIR. Ăn trong bóng tối</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Saigon Centre</span><span class="mv-text">2.1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Acoustic Bar - Ngô Thời Nhiệm</span><span class="mv-text">2.2 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Vincom Đồng Khởi</span><span class="mv-text">2.2 km</span></div></div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-</div>*@
+		</section>
+	</div>*@
 
