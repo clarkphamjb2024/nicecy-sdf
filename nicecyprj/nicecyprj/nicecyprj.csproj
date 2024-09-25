@@ -566,6 +566,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\Blank.generated.cs" />
     <Compile Include="App_Data\Models\City.generated.cs" />
     <Compile Include="App_Data\Models\ContentBase.generated.cs" />
     <Compile Include="App_Data\Models\Detail.generated.cs" />
@@ -649,6 +650,8 @@
     <Content Include="Views\MacroPartials\LatestPublishedHotels.cshtml" />
     <Content Include="Views\MacroPartials\BookingHTLHTML.cshtml" />
     <Content Include="Views\SearchHotels.cshtml" />
+    <Content Include="Views\Blank.cshtml" />
+    <Content Include="Views\MacroPartials\AboutUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

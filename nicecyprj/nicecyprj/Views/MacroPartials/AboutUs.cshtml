@@ -1,0 +1,11 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Web;
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+	var htlHTML = Model.MacroParameters["htlHTML"].ToString();
+}
+
+@if (htlHTML != null)
+{
+	@Html.Raw(HttpUtility.HtmlDecode(htlHTML))
+}

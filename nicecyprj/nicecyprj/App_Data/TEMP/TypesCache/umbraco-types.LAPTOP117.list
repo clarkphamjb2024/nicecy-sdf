@@ -633,6 +633,7 @@ Umbraco.Web.PublishedModels.Feature, nicecyprj, Version=1.0.0.0, Culture=neutral
 Umbraco.Core.Models.PublishedContent.PublishedContentModel
 
 nicecyprj.Models.SearchHotelsModel, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Blank, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.City, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.ContentBase, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.District, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null

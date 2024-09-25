@@ -105,15 +105,15 @@ Recent Listing
   margin-bottom: 80px;
 }
 
-.recent-listing .listing-item {
-  display: inline-flex;
-  background-color: #fff;
-  border-radius: 12px;
-  position: relative;
-  margin-bottom: 30px;
-  padding: 0px;
-  border: 1px solid rgb(236, 236, 236);
-}
+   .recent-listing .listing-item {
+      display: inline-flex;
+      background-color: rgb(253 246 242);
+      border-radius: 12px;
+      position: relative;
+      margin-bottom: 30px;
+      padding: 0px;
+      border: 1px solid rgb(236, 236, 236);
+   }
 
 .recent-listing .left-image {
   float: left;

@@ -116,6 +116,13 @@ namespace Umbraco.Web.PublishedModels
 		public string HsdTitle => this.Value<string>("hsdTitle");
 
 		///<summary>
+		/// IsVisible
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("isVisible")]
+		public bool IsVisible => this.Value<bool>("isVisible");
+
+		///<summary>
 		/// Hotel Map Description
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]

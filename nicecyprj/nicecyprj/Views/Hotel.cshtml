@@ -13,7 +13,7 @@
 <section class="section mb-0" id="d-heading">
 	<div class="container px-0 px-sm-3 relative">
 		<div class="row g-1 cursor-pointer" data-bs-toggle="modal" data-bs-target="#imgCarouselModal" >
-			@if (ImgUrls.Count() >= 3)
+			@if (ImgUrls != null && ImgUrls.Count() >= 3)
 			{
 				<div class="col-7 pl-0 big-image">
 					<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[0]" />
@@ -44,27 +44,30 @@
 						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
 						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
 					</div>
-
-					<div class="carousel-inner">
-						<div class="carousel-item active" data-bs-interval="10000">
-							<img src="@ImgUrls[0]" class="d-block w-100">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Tổng quan</h5>
+					@if (ImgUrls != null && ImgUrls.Count() >= 3)
+					{
+						<div class="carousel-inner">
+							<div class="carousel-item active" data-bs-interval="10000">
+								<img src="@ImgUrls[0]" class="d-block w-100">
+								<div class="carousel-caption d-none d-md-block">
+									@*<h5>Tổng quan</h5>*@
+								</div>
+							</div>
+							<div class="carousel-item" data-bs-interval="2000">
+								<img src="@ImgUrls[1]" class="d-block w-100">
+								<div class="carousel-caption d-none d-md-block">
+									@*<h5>Tổng quan</h5>*@
+								</div>
+							</div>
+							<div class="carousel-item" data-bs-interval="2000">
+								<img src="@ImgUrls[2]" class="d-block w-100">
+								<div class="carousel-caption d-none d-md-block">
+									@*<h5>Tổng quan</h5>*@
+								</div>
 							</div>
 						</div>
-						<div class="carousel-item" data-bs-interval="2000">
-							<img src="@ImgUrls[1]" class="d-block w-100">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Tổng quan</h5>
-							</div>
-						</div>
-						<div class="carousel-item" data-bs-interval="2000">
-							<img src="@ImgUrls[2]" class="d-block w-100">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Tổng quan</h5>
-							</div>
-						</div>
-					</div>
+					}
+						
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Previous</span>
@@ -75,13 +78,13 @@
 					</button>
 				</div>
 			</div>
-			<div class="modal-footer">
+			@*<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-			</div>
+			</div>*@
 		</div>
 	</div>
 </div>
-<section class="section">
+<section class="section" id="overview-heading">
 	<div>
 		<div class="container">
 			<div class="extend-menu">

@@ -55,9 +55,6 @@ window.onload = () => {
 
 $(document).ready(function () {
 	//replaceSpecialCharacters();
-	$('#imgCarouselModal').modal()
-	var myCarousel = document.querySelector('#carouselExampleDark')
-	var carousel = new bootstrap.Carousel(myCarousel)
 
 	var path = window.location.href;
 	if (path !== 'https://localhost:44372/') {
@@ -164,3 +161,13 @@ $(document).ready(function () {
 });
 
 
+$(document).ready(function () {
+	var path = window.location.href;
+	if (path === 'https://localhost:44366/') {
+		$('body').removeClass('fixed-header')
+	}
+	
+	$('#imgCarouselModal').modal()
+	var myCarousel = document.querySelector('#carouselExampleDark')
+	var carousel = new bootstrap.Carousel(myCarousel)
+});
