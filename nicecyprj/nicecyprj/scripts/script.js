@@ -59,7 +59,7 @@ $(document).ready(function () {
 	var path = window.location.href;
 	if (path !== 'https://localhost:44372/') {
 		$('body').addClass('fixed-header')
-	}	
+	}
 	function getParam(param) {
 		return new URLSearchParams(window.location.search).get(param);
 	}
@@ -71,7 +71,7 @@ $(document).ready(function () {
 	if (city !== null) {
 		setSelectValue('chooseCategory', city);
 	}
-	
+
 
 	$('.owl-one').owlCarousel({
 		animateOut: 'fadeOut',
@@ -162,12 +162,26 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+
+	//setTimeout(function () {
+	//	$('#promotion').modal('show');
+	//}, 3000);
+
+	//if (!sessionStorage.adPromotion) {
+	//	setTimeout(function () {
+	//		$('#promotion').modal('show');
+	//	}, 3000);
+	//	sessionStorage.adPromotion = 1;
+	//}
+});
+
+$(document).ready(function () {
 	var path = window.location.href;
 	if (path === 'https://localhost:44366/') {
 		$('body').removeClass('fixed-header')
 	}
-	
+
 	$('#imgCarouselModal').modal()
 	var myCarousel = document.querySelector('#carouselExampleDark')
-	var carousel = new bootstrap.Carousel(myCarousel)
+	var carousel = new bootstrap.Carousel(myCarousel);
 });
