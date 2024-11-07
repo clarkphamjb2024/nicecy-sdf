@@ -627,6 +627,7 @@ Umbraco.Web.HealthCheck.NotificationMethods.EmailNotificationMethod, Umbraco.Web
 
 Umbraco.Core.Models.PublishedContent.PublishedElementModel
 
+Umbraco.Web.PublishedModels.Area, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Detail, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Feature, nicecyprj, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 

@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel
+	public partial class Home : PublishedContentModel, IContentBase
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -46,59 +46,94 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// CNC Background Image
+		/// DANH SÁCH KHÁCH SẠN
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("allHotels")]
+		public Newtonsoft.Json.Linq.JToken AllHotels => this.Value<Newtonsoft.Json.Linq.JToken>("allHotels");
+
+		///<summary>
+		/// HÌNH ẢNH NỀN
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("cncBackground")]
 		public IEnumerable<IPublishedContent> CncBackground => this.Value<IEnumerable<IPublishedContent>>("cncBackground");
 
 		///<summary>
-		/// CNC Call To Action Link
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("cncCallToActionLink")]
-		public IPublishedContent CncCallToActionLink => this.Value<IPublishedContent>("cncCallToActionLink");
-
-		///<summary>
-		/// CNC Call To Action Caption
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("cncCTACaption")]
-		public string CncCtacaption => this.Value<string>("cncCTACaption");
-
-		///<summary>
-		/// CNC Description
+		/// NỘI DUNG
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("cncDescription")]
 		public string CncDescription => this.Value<string>("cncDescription");
 
 		///<summary>
-		/// CNC Header
+		/// TIÊU ĐỀ
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("cncHeader")]
 		public string CncHeader => this.Value<string>("cncHeader");
 
 		///<summary>
-		/// Landscape Images
+		/// NỘI DUNG
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("galleryBody")]
+		public string GalleryBody => this.Value<string>("galleryBody");
+
+		///<summary>
+		/// HÌNH ẢNH
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("galleryImages")]
+		public IEnumerable<Umbraco.Core.Models.MediaWithCrops> GalleryImages => this.Value<IEnumerable<Umbraco.Core.Models.MediaWithCrops>>("galleryImages");
+
+		///<summary>
+		/// TIÊU ĐỀ
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("galleryTitle")]
+		public string GalleryTitle => this.Value<string>("galleryTitle");
+
+		///<summary>
+		/// HÌNH ẢNH CHÍNH
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("landscapeImages")]
 		public IEnumerable<IPublishedContent> LandscapeImages => this.Value<IEnumerable<IPublishedContent>>("landscapeImages");
 
 		///<summary>
-		/// NHT Content
+		/// DANH SÁCH KHÁCH SẠN
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("nhtBodyText")]
 		public Newtonsoft.Json.Linq.JToken NhtBodyText => this.Value<Newtonsoft.Json.Linq.JToken>("nhtBodyText");
 
 		///<summary>
-		/// NHT Title
+		/// PROMOTION PHOTO
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("nhtTitle")]
-		public string NhtTitle => this.Value<string>("nhtTitle");
+		[ImplementPropertyType("promotionPhoto")]
+		public Umbraco.Core.Models.MediaWithCrops PromotionPhoto => this.Value<Umbraco.Core.Models.MediaWithCrops>("promotionPhoto");
+
+		///<summary>
+		/// PROMOTION URL
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("promotionUrl")]
+		public string PromotionUrl => this.Value<string>("promotionUrl");
+
+		///<summary>
+		/// Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("bodyText")]
+		public Newtonsoft.Json.Linq.JToken BodyText => ContentBase.GetBodyText(this);
+
+		///<summary>
+		/// Page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("pageTitle")]
+		public string PageTitle => ContentBase.GetPageTitle(this);
 	}
 }

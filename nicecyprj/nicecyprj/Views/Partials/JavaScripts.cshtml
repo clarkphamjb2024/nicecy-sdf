@@ -1,18 +1,277 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-		  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-		  crossorigin="anonymous"></script>
+<script>
+	/* When the user clicks on the button,
+	toggle between hiding and showing the dropdown content */
+	function showFlyoutMenu() {
+		document.getElementById("flyoutMenu").classList.toggle("showState");
+	}
 
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-		  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function (event) {
+		if (!event.target.matches('.flyoutBtn')) {
+			var dropdowns = document.getElementsByClassName("flyoutMenu");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('showState')) {
+					openDropdown.classList.remove('showState');
+				}
+			}
+		}
 
-<script src="~/scripts/script.js"></script>
 
-<!-- OwlCarousel2 JS -->
-<script src="~/scripts/owl.carousel.min.js"></script>
+		if (event.target.classList.contains('cancelSearchBtn')) {
+			var menu = document.getElementsByClassName("flyoutSearch");
+			var i;
+			for (i = 0; i < menu.length; i++) {
+				var openingMenu = menu[i];
+				if (openingMenu.classList.contains('showState')) {
+					openingMenu.classList.remove('showState');
+				}
+			}
+		}
+	}
 
-<!-- Typed JS -->
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+	function showFlyoutSearch() {
+		document.getElementById("flyoutSearch").classList.toggle("showState");
+	}
+</script>
+<script>
+	new Swiper(".progress-slide-carousel", {
+		loop: true,
+		fraction: true,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		}
+	});
+	new Swiper(".hotel-slide-carousel", {
+		loop: true,
+		fraction: true,
+		navigation: {
+			nextEl: ".multiple-slide-carousel .swiper-button-next",
+			prevEl: ".multiple-slide-carousel .swiper-button-prev",
+		},
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+	});
+	new Swiper(".multiple-slide-carousel", {
+		loop: true,
+		slidesPerView: 1,
+		spaceBetween: 20,
+		navigation: {
+			nextEl: ".multiple-slide-carousel .swiper-button-next",
+			prevEl: ".multiple-slide-carousel .swiper-button-prev",
+		},
+		breakpoints: {
+			1920: {
+				slidesPerView: 3,
+				spaceBetween: 30
+			},
+			1028: {
+				slidesPerView: 3,
+				spaceBetween: 30
+			},
+			990: {
+				slidesPerView: 1,
+				spaceBetween: 0
+			},
+			932: {
+				slidesPerView: 1,
+				spaceBetween: 0
+			}
+		}
+	});
+</script>
+<script>
+	$(function () {
+		$('input[name="daterange"]').daterangepicker({
+			opens: 'left'
+		}, function (start, end, label) {
+			console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			localStorage.setItem("dt", start.format('YYYY-MM-DD') + '.' + end.format('YYYY-MM-DD'));
+		});
+	});
+
+	$('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+		$(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+	});
+</script>
+<script>
+	let citiesDistrictsData = [
+		{
+			"city": "HCM",
+			"districts": [
+				{
+					"id": 1,
+					"text": "Quận 1"
+				},
+				{
+					"id": 2,
+					"text": "Quận Phú Nhuận"
+				}
+			]
+		}
+	];
+	function initData() {
+		// Fetch data
+		//$.ajax({
+		//	url: "https://localhost:44366/assets/data.json",
+		//	type: "GET",
+		//	success: function (data) {
+		//		citiesDistrictsData = data;
+		//	},
+		//	error: function (xhr, status, error) {
+		//		console.error("Error fetching city and district data:", error);
+		//		alert("Failed to load city and district data.");
+		//	}
+		//});
+
+		// Initialize Select2 for city and district fields
+		$('#select-city-field, #multiple-select-district-field').select2({
+			theme: "bootstrap-5",
+			width: '100%',
+			placeholder: $(this).data('placeholder'),
+			closeOnSelect: false,
+		});
+
+		//https://select2.org/programmatic-control/methods
+
+		// Handle city selection
+		$('#select-city-field').on('select2:select', function (e) {
+			$('#select-city-field').select2("close");
+
+			const cityId = e.params.data.id;
+			const cityData = citiesDistrictsData.find(c => c.city === cityId);
+
+			if (cityData && cityData.districts) {
+				const districts = cityData.districts;
+
+				// Clear current district selections and update with new data
+				$("#multiple-select-district-field").val(null).trigger("change");
+				$("#multiple-select-district-field").select2({
+					data: districts
+				});
+			} else {
+				$("#multiple-select-district-field").select2({
+					data: [] // Clear districts if no data found
+				});
+			}
+		});
+	}
+
+	initData();
+
+	function onSearchingAvailableHotels() {
+
+		$('#loading')[0].style.display = "block";
+		$('#arrow')[0].style.display = "none";
+
+		const dtRange = $('input[name="daterange"]').val().replace(/\s+/g, '');
+		const selectedDistricts = $("#multiple-select-district-field").select2('data');
+
+		if (!dtRange) {
+			return;
+		}
+
+		if (selectedDistricts.length === 0) {
+			return;
+		}
+
+		const ap = selectedDistricts.map(x => x.id).join('.');
+		const ps = $("#adultSelect").val();
+
+		if (!ps) {
+			return;
+		}
+
+		const queryParams = new URLSearchParams({
+			ap: ap,
+			dt: dtRange,
+			ps: ps,
+			sc: "HTLCHANNEL"
+		});
+
+		window.location.href = "/danh-sach-khach-san?" + queryParams.toString();
+	}
+
+	function updateSearchbox() {
+		const searchParams = new URLSearchParams(window.location.search);
+
+		if (searchParams.has('ps')) {
+			$('#ps').text(searchParams.get('ps'));
+			$('#adultSelect').val(searchParams.get('ps'));
+		}
+
+		if (searchParams.has('ap')) {
+			let selectedDistrictsFromUser = [];
+			let allAvailableDistricts = [];
+
+			if (citiesDistrictsData && citiesDistrictsData.length > 0) {
+				//citiesDistrictsData.forEach(d => {
+				//	const districts = d.districts.filter(x => searchParams.get('ap').split('.').includes(x.id.toString()));
+				//	selectedDistrictsFromUser.push(...districts);
+				//});
+				//$('#ap').text(selectedDistrictsFromUser.map(d => d.text).join(', '));
+				citiesDistrictsData.forEach(data => {
+					const selectedDistricts = data.districts.filter(district => searchParams.get('ap').split('.').includes(district.id.toString()));
+
+					if (selectedDistricts.length > 0) {
+						allAvailableDistricts.push(...data.districts);
+						$('#select-city-field').select2().val(data.city).trigger('change');
+						selectedDistrictsFromUser.push(...selectedDistricts);
+					}
+				});
+
+				$('#ap').text(selectedDistrictsFromUser.map(d => d.text).join(', '));
+				$("#multiple-select-district-field").select2({
+					data: allAvailableDistricts
+				}).val(selectedDistrictsFromUser.map(d => d.id)).trigger('change');
+			} else {
+				$.ajax({
+					url: "https://localhost:44366/assets/data.json",
+					type: "GET",
+					success: function (data) {
+						citiesDistrictsData = data;
+
+						citiesDistrictsData.forEach(data => {
+							const selectedDistricts = data.districts.filter(district => searchParams.get('ap').split('.').includes(district.id.toString()));
+
+							if (selectedDistricts.length > 0) {
+								allAvailableDistricts.push(...data.districts);
+								$('#select-city-field').select2().val(data.city).trigger('change');
+								selectedDistrictsFromUser.push(...selectedDistricts);
+							}
+						});
+
+						$('#ap').text(selectedDistrictsFromUser.map(d => d.text).join(', '));
+						$("#multiple-select-district-field").select2({
+							data: allAvailableDistricts
+						}).val(selectedDistrictsFromUser.map(d => d.id)).trigger('change');
+					},
+					error: function (xhr, status, error) {
+						console.error("Error fetching district data:", error);
+					}
+				});
+			}
+		}
+
+		if (searchParams.has('dt')) {
+			$('#dt').text(searchParams.get('dt').split('-')[0] + " - " + searchParams.get('dt').split('-')[1]);
+		}
+	}
+
+	updateSearchbox();
+
+</script>

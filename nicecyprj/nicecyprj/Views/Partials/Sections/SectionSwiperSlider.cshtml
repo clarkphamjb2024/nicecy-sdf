@@ -2,41 +2,32 @@
 
 @{
 	Layout = null;
-	// Get basic design settings from the homepage
-	var home = (Home)Model.Root();
-	var landscapeImages = home.LandscapeImages.ToList();
+	var homePage = (Home)Model.Root();
+	var slideImages = homePage.LandscapeImages?.ToList();
 }
 
-<section class="section">
-	<div class="swiper-desktop">
-		<div class="owl-one owl-carousel">
-			@for (int i = 0; i < landscapeImages.Count(); i++)
+<div class="w-full relative">
+	<div class="swiper progress-slide-carousel swiper-container relative">
+		<div class="swiper-wrapper">
+			@if (slideImages != null)
 			{
-				<div id="swiper-background-@i" class="background-image">
+				for (int i = 0; i < slideImages.Count(); i++)
+				{
 					<style>
 						#swiper-background-@i {
-							background-image: url(@landscapeImages[i].Url());
+							background-image: url(@slideImages[i].Url());
 						}
 					</style>
-					<div class="container">
-						<div class="home-section">
-							<div class="row align-items-center">
-								<div class="col-lg-12">
-									<div class="home-intro text-center">
-										<h1><span id="typed-id-@i"></span></h1>
-									</div>
-								</div>
-							</div>
+					<div class="swiper-slide">
+						<div class="bg-indigo-50 flex justify-center items-center h-[80vh]" style="
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: cover;" id="swiper-background-@i">
 						</div>
 					</div>
-				</div>
+				}
 			}
 		</div>
+		<div class="swiper-pagination !bottom-2 !top-auto !w-80 right-0 mx-auto bg-gray-100"></div>
 	</div>
-	<div class="swiper-mobile">
-		<div class="owl-one owl-carousel">
-			<div id="mb1" class="background-image"></div>
-			<div id="mb2" class="background-image"></div>
-		</div>
-	</div>
-</section>
+</div>

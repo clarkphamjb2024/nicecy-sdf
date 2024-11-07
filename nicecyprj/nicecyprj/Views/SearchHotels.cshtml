@@ -4,141 +4,255 @@
 	Layout = "Master.cshtml";
 }
 
-<div class="transition transition-2 is-active"></div>
-<!-- Findroom Content -->
-<div class="main-banner">
-	<div class="container pt-3" id="filter-location-container">
-		<div class="row">
-			<div class="col-lg-12">
-				<form id="search-form" name="gs" method="submit" role="search" action="#">
-					<div class="row">
-						<div class="col-5 align-self-center">
-							<fieldset>
-								<select name="diem_den" class="form-select" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
-									<option selected>Chọn vị trí</option>
-									@foreach (var city in Model.Cities)
-									{
-										<option value="@city.Id">@city.Name</option>
-									}
-								</select>
-							</fieldset>
+<style>
+	.fraction-slide-carousel #slider-button-left {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel #slider-button-left {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel #slider-button-right {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-prev {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-next:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-prev:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+</style>
+
+
+<div class="min-h-full mt-[30px] container">
+	<!-- Custom Style -->
+	<style>
+		.nav-for-slider .swiper-slide {
+			cursor: pointer;
+			margin-right: 0 !important;
+		}
+
+		.swiper-wrapper {
+			height: auto;
+		}
+
+		.nav-for-slider .swiper-slide img {
+			border: 2px solid transparent;
+			border-radius: 5px;
+		}
+
+		.nav-for-slider .swiper-slide-thumb-active img {
+			border-color: rgb(79 70 229);
+		}
+
+		.lightbox {
+			display: none;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		.lightbox-image {
+			display: block;
+			margin: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.close {
+			color: #fff;
+			font-size: 3em;
+			position: absolute;
+			top: 20px;
+			right: 30px;
+			cursor: pointer;
+		}
+
+		.gallery {
+			width: 90vw;
+			max-width: 1200px;
+			margin: 0 auto;
+			grid-template-rows: 1fr;
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+		}
+
+			.gallery img {
+				max-width: 100%;
+				cursor: pointer;
+			}
+
+				.gallery img:hover {
+					max-width: 100%;
+					cursor: pointer;
+				}
+	</style>
+	<section class="mb-[3px] z-[10]">
+		<!--HTML CODE-->
+		<div class="w-full relative">
+			<div class="swiper multiple-slide-carousel swiper-container relative">
+				<div class="swiper-wrapper mb-16">
+					@foreach (var img in Model.Images)
+					{
+						<div class="swiper-slide">
+							<div class="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
+								<img src="@img" class="w-full h-full rounded-2xl" alt="">
+							</div>
 						</div>
-						<div class="col-5 align-self-center">
-							<fieldset>
-								<select name="so_luong" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-									<option selected>Số Khách</option>
-									<option value="0">Người lớn</option>
-									<option value="1">Trẻ em</option>
-									<option value="2">Em bé</option>
-								</select>
-							</fieldset>
-						</div>
-						<div class="col-2">
-							<fieldset>
-								<button class="search-button primary-btn ml-3">Tìm phòng</button>
-							</fieldset>
-						</div>
-					</div>
-				</form>
+					}
+
+				</div>
+				<div class="absolute flex justify-center items-center m-auto left-0 right-0 w-fit bottom-12">
+					<button id="slider-button-left"
+							  class="swiper-button-prev group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-12 !h-12 transition-all duration-500 rounded-full  hover:bg-indigo-600 !-translate-x-16"
+							  data-carousel-prev>
+					</button>
+					<button id="slider-button-right"
+							  class="swiper-button-next group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-12 !h-12 transition-all duration-500 rounded-full hover:bg-indigo-600 !translate-x-16"
+							  data-carousel-next>
+					</button>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
-<!-- End Findroom Content -->
-<!-- Room Listing -->
-<div class="recent-listing mt-3">
-	<div class="container">
-		<div class="row p-3 d-flex justify-content-center">
-			<div class="col-lg-10">
-				@foreach (var item in Model.Data)
+	</section>
+
+	<section class="py-[20px]">
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3 mx-auto bg-white md:px-[20px] lg:px-[20px] rounded gap-3 mx-auto w-full rounded ">
+			@if (Model.Data != null && Model.Data.Any())
+			{
+				foreach (var hotel in Model.Data)
 				{
-					<div class="listing-item row cursor-pointer" onclick="location.href='@item.Url'">
-						<div class="left-image col-lg-5 p-0">
-							<div class="ecommerce-gallery">
-								<div class="row no-gutters">
-									<div class="col-12 mb-1">
-										<div class="lightbox" data-mdb-lightbox-init>
-											<img src="@item.ImgUrl"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100 object-fit-cover" />
+					<div class="flex justify-start items-center w-full">
+						<div class="w-full">
+							<div class="flex flex-col lg:flex-col md:flex-col my-6 bg-white rounded-lg w-full shadow-sm border border-transparent hover:shadow-lg">
+								<div class="p-2.5 md:w-full lg:w-full h-[300px] shrink-0 overflow-hidden shadow-sm hover:shadow-lg">
+									<div class="grid gap-2">
+										<div>
+											<a href="@hotel.Url" target="_blank" class="text-xl">
+												<img src="@hotel.ImgUrl" alt="card-image" class="h-[200px] w-full object-cover rounded-lg">
+											</a>
+
+										</div>
+										<div class="grid grid-cols-3 gap-2">
+											@foreach (var photo in hotel.ImgUrls.Take(3))
+											{
+												<div>
+													<a href="@hotel.Url" target="_blank" class="text-xl">
+														<img class="h-auto max-w-full rounded-lg" src="@photo" alt="">
+													</a>
+												</div>
+											}
 										</div>
 									</div>
-									@if (item.ImgUrls.Count() == 4)
-									{
-										<div class="col-4 sub-image" id="first-img">
-											<img src="@item.ImgUrls[1]"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active img-fluid" />
-										</div>
-										<div class="col-4 sub-image" id="center-img">
-											<img src="@item.ImgUrls[2]"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100" />
-										</div>
-										<div class="col-4 sub-image" id="last-img">
-											<img src="@item.ImgUrls[3]"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100" />
-										</div>
-									}
-									else
-									{
-										<div class="col-4 sub-image" id="first-img">
-											<img src="../assets/1721630390846-2JPG.jpg"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active img-fluid" />
-										</div>
-										<div class="col-4 sub-image" id="center-img">
-											<img src="../assets/1721630390806-1JPG.jpg"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100" />
-										</div>
-										<div class="col-4 sub-image" id="last-img">
-											<img src="../assets/1721630390846-2JPG.jpg"
-												  alt="Gallery image 1"
-												  class="ecommerce-gallery-main-img active w-100" />
-										</div>
-									}
-
 								</div>
-							</div>
-						</div>
-						<div class="right-content col-lg-5 p-3">
-							<h4>@item.HotelName</h4>
-							<h6>@item.Address</h6>
-							<div class="row">
-								<ul class="service">
-									@foreach (var feature in item.Features)
-									{
-										<li><img src="@feature.Icon" alt="">@feature.FeatureName</li>
-									}
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-2 d-flex flex-column justify-content-end align-items-end price-container p-4">
-							<div class="mt-4">
-								<button class="primary-btn search-button choose-room" onclick="location.href='@item.Url'">Đặt Ngay</button>
+								<div class="p-2 mt-[10px]">
+									<div class="flex flex-row justify-content-start">
+										<div class="mb-4 rounded-full w-auto bg-teal-600 py-0.5 px-2.5 border border-transparent text-white">NICECY</div>
+										<div class="mb-4 rounded-full w-auto bg-teal-600 py-0.5 px-2.5 border border-transparent text-white">@hotel.DistrictName</div>
+									</div>
+
+									<h4 class="mb-2 text-orange-600 text-xl font-semibold">
+										<a href="@hotel.Url" target="_blank" class="text-xl">
+											@hotel.HotelName
+										</a>
+									</h4>
+									<p class="mb-3 text-gray-600 font-bold ">
+										@hotel.HotelDescription
+									</p>
+
+									<div class="grid grid-cols-2 gap-2 md:grid-cols-2 lg:grid-cols-2 ">
+										@foreach (var category in hotel.Features)
+										{
+											<div class="flex gap-2 items-center justify-start">
+												<img src="@category.Icon"
+													  class="w-[16px] h-[16px]"><span class="text-xs text-gray-600 ">
+													@category.FeatureName
+												</span>
+											</div>
+										}
+									</div>
+
+									<div class="w-full mt-[40px] mb-[30px] text-center">
+										<a href="@hotel.Url" class="text-white font-semibold bg-orange-600 p-2 rounded-full hover:bg-orange-500">CHỌN PHÒNG</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				}
+			}
 
-			</div>
+
 		</div>
-	</div>
+
+		@if (Model.Data == null || !Model.Data.Any())
+		{
+			<div class="mx-auto flex flex-col justify-center gap-5 text-center w-full">
+				<img src="https://cdn-icons-png.flaticon.com/512/8209/8209385.png" style="width:200px; height:200px" class="mx-auto" />
+				<span class="text-base">Không tìm thấy khách sạn. Bạn vui lòng kiểm tra lại ngày đến và ngày đi nhé.</span>
+			</div>
+		}
+	</section>
 </div>
-<!-- EndRoom Listing -->
-<!-- Booking Long Term -->
-@*<section id="booking-long-term" class="section">
-		<div class="container">
-			<div class="branch-heading">
-				<h3>Bạn cần đăng ký ở dài hạn?</h3>
-				<button class="btn btn-primary mt-4 round-3"><i class="fa fa-calendar"></i> Đặt lịch hẹn trải nghiệm tại đây</button>
-			</div>
-		</div>
-	</section>*@
+<!-- Custom Slider -->
+<script>
+	var swiper_thumbs = new Swiper(".nav-for-slider", {
+		loop: true,
+		spaceBetween: 30,
+		slidesPerView: 4,
+	});
+	var swiper = new Swiper(".main-slide-carousel", {
+		slidesPerView: 1,
+		effect: "fade",
+		thumbs: {
+			swiper: swiper_thumbs,
+		},
+	});
 
-<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-<!-- *  *  *  * Gallery *  *  *  *  * -->
-<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-@Html.Partial("~/views/partials/Sections/Gallery.cshtml")
+	// Get references to elements
+	const gallery = document.querySelector('.gallery');
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImage = document.getElementById('lightbox-image');
+	const closeButton = document.getElementById('close');
+
+	// Add event listener to each image
+	gallery.addEventListener('click', e => {
+		if (e.target.classList.contains('gallery-image')) {
+			const imageSrc = e.target.src;
+			lightboxImage.src = imageSrc;
+			lightbox.style.display = 'flex';
+		}
+	});
+
+	// Close lightbox when close button is clicked
+	closeButton.addEventListener('click', () => {
+		lightbox.style.display = 'none';
+	});
+
+	// Close lightbox when clicking outside the image
+	lightbox.addEventListener('click', e => {
+		if (e.target === lightbox) {
+			lightbox.style.display = 'none';
+		}
+	});
+</script>

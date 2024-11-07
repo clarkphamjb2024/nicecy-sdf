@@ -1,170 +1,304 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Hotel>
 @using ContentModels = Umbraco.Web.PublishedModels;
+@using Hotel = Umbraco.Web.PublishedModels.Hotel;
+
+
 @{
 	Layout = "Master.cshtml";
-	List<string> ImgUrls = new List<string>();
-	foreach (var item in Model.Photos)
-	{
-		ImgUrls.Add(item.Url());
-	}
 }
+<style>
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	span,
+	p,
+	a {
+		font-family: "Montserrat", sans-serif !important;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 14px;
+	}
 
-<div class="transition transition-2 is-active"></div>
-<section class="section mb-0" id="d-heading">
-	<div class="container px-0 px-sm-3 relative">
-		<div class="row g-1 cursor-pointer" data-bs-toggle="modal" data-bs-target="#imgCarouselModal" >
-			@if (ImgUrls != null && ImgUrls.Count() >= 3)
+	.flyoutMenu {
+		display: none;
+	}
+
+	.flyoutBtn:hover .flyoutMenu {
+		display: block;
+	}
+
+	.flyoutSearch {
+		display: none;
+	}
+
+	.flyoutSearchBtn:hover .flyoutSearch {
+		display: block;
+	}
+
+	.showState {
+		display: block !important;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 200ms;
+	}
+
+	.swiper-wrapper {
+		width: 100%;
+		height: max-content !important;
+		padding-bottom: 64px !important;
+		-webkit-transition-timing-function: linear !important;
+		transition-timing-function: linear !important;
+		position: relative;
+	}
+
+	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+		background: #4F46E5 !important;
+	}
+
+	.fraction-slide-carousel #slider-button-left {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.fraction-slide-carousel #slider-button-right {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.fraction-slide-carousel .swiper-button-prev {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.fraction-slide-carousel .swiper-button-next:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.fraction-slide-carousel .swiper-button-prev:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	[data-tab].active.tab-active\:bg-indigo-600 {
+		background-color: rgb(0, 0, 0) !important;
+	}
+
+	#daterangeTextbox:focus {
+		outline: none !important;
+	}
+
+	/* Custom Calendar */
+	.applyBtn {
+		background: #ff6a00 !important;
+		border: none !important;
+	}
+
+	.calendar-table {
+		font-family: "Montserrat", sans-serif !important;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 14px;
+	}
+
+	.applyBtn {
+		font-family: "Montserrat", sans-serif !important;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 14px;
+	}
+
+	.cancelBtn {
+		font-family: "Montserrat", sans-serif !important;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 14px;
+	}
+
+	/* Select2 */
+	.select2-container--bootstrap-5 .select2-selection {
+		border: 1px solid #6f6f6f !important
+	}
+
+	.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+		font-size: 13px !important;
+		font-weight: bold !important;
+		color: #e4551f !important;
+	}
+
+	.select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
+		padding: .375rem .75rem;
+		font-size: 13px !important;
+		font-weight: bold !important;
+		line-height: 1.5;
+	}
+
+	.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove {
+		color: #e4551f !important;
+	}
+
+	.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+		font-weight: bold !important;
+	}
+
+	.select2-results__option select2-results__option--highlighted {
+		font-size: 13px !important;
+		font-weight: bold !important;
+		line-height: 1.5;
+	}
+
+	.nav-for-slider .swiper-slide-thumb-active img {
+		border: 1px solid #ccc !important;
+	}
+
+	.swiper-pagination-bullet-active {
+		background-color: rgb(234 88 12);
+	}
+
+	.swiper-pagination-bullet {
+		width: 15px;
+		height: 15px;
+	}
+</style>
+
+<div class="w-full relative">
+	<div class="swiper hotel-slide-carousel swiper-container relative">
+		<div class="swiper-wrapper">
+			@if (Model.Photos != null)
 			{
-				<div class="col-7 pl-0 big-image">
-					<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[0]" />
-				</div>
-				<div class="col-5">
-					<div class="row relative">
-						<div class="col-12 mb-1 small-image">
-							<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[1]" />
-						</div>
-						<div class="col-12 small-image">
-							<img class="object-fit-cover img-fluid rounded " src="@ImgUrls[2]" />
+				for (int i = 0; i < Model.Photos.Count(); i++)
+				{
+					<style>
+					#swiper-background-@i {
+						background-image: url(@Model.Photos.ToList()[i].Url());
+					}
+					</style>
+					<div class="swiper-slide">
+						<div class="bg-indigo-50 flex justify-center items-center h-[80vh]" style="
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: cover;" id="swiper-background-@i">
 						</div>
 					</div>
-				</div>
+				}
 			}
 		</div>
-	</div>
-</section>
-<!-- modal -->
-<div class="modal fade" id="imgCarouselModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-body">
-				<!-- carousel -->
-				<div id="carouselExampleDark" class="carousel carousel slide" data-bs-ride="carousel">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-					</div>
-					@if (ImgUrls != null && ImgUrls.Count() >= 3)
-					{
-						<div class="carousel-inner">
-							<div class="carousel-item active" data-bs-interval="10000">
-								<img src="@ImgUrls[0]" class="d-block w-100">
-								<div class="carousel-caption d-none d-md-block">
-									@*<h5>Tổng quan</h5>*@
-								</div>
-							</div>
-							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@ImgUrls[1]" class="d-block w-100">
-								<div class="carousel-caption d-none d-md-block">
-									@*<h5>Tổng quan</h5>*@
-								</div>
-							</div>
-							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@ImgUrls[2]" class="d-block w-100">
-								<div class="carousel-caption d-none d-md-block">
-									@*<h5>Tổng quan</h5>*@
-								</div>
-							</div>
-						</div>
-					}
-						
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
-			</div>
-			@*<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-			</div>*@
-		</div>
+		<div class="swiper-pagination !bottom-2 !top-auto !w-80 right-0 mx-auto"></div>
 	</div>
 </div>
-<section class="section" id="overview-heading">
-	<div>
-		<div class="container">
-			<div class="extend-menu">
-				<div class="tab mx-auto">
-					<ul class="navbar-nav d-flex flex-row justify-content-start flex-grow-0 pe-3">
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="#overview">Giới thiệu</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="#rooms">Chọn phòng</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="#location">Vị trí</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<div class=" mt-[30px] container">
+	<section class="py-[20px] relative">
+		<div class="mx-auto bg-white p-[30px] flex flex-col justify-center gap-3 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full rounded">
+			<div class="w-full lg:w-2/3">
+				<h2 class="text-2xl md:text-3xl lg:text-3xl font-bold text-black leading-[3.25rem] flex items-center justify-center">
+					@Model.HotelName
+				</h2>
+				<p class="font-base mt-[40px] mb-[40px] text-gray-900">
+					@Model.Description
+				</p>
 
-<div class="container">
-	<section class="section" id="overview">
-		<div class="d-flex flex-wrap justify-content-center" style="gap: 2rem;">
-			<div class="overview-detail">
-				<h2 class="mt-3 pb-4">@Model.HotelName</h2>
-				<div>
-					<p>@Model.Description</p>
-				</div>
-				<div class="overview-convenient pt-5">
-					<div class="mb-4">
-						<h4>Tiện nghi được ưu chuộng nhất</h4>
-					</div>
-					<div class="row">
-						@foreach (var item in Model.Features)
+				<h4 class="text-2xl font-bold text-black leading-[3.25rem] mb-[20px]">
+					Tiện nghi được ưu chuộng nhất
+				</h4>
+
+				<div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+					@if (@Model.Features != null && @Model.Features.Any())
+					{
+						foreach (var category in @Model.Features)
 						{
-							<div class="d-flex flex-row col-6 col-sm-6 col-md-4 mb-4">
-								<img src="@item.Icon.Url()" />
-								<span>@item.FeatureName</span>
+							<div class="flex gap-2 items-center justify-start">
+								<img src="@category.Icon.Url()"
+									  class="w-[30px] h-[30px]"><span class="sc-eGRUor dIaozk">
+									@category.FeatureName
+								</span>
 							</div>
 						}
-					</div>
+					}
 				</div>
 			</div>
-			<div class="overview-map">
-				<div class="map">
-					<a target="_blank" href="@Model.MapUrl">
-						<span>
-							<img src="@Model.MapPhoto.Url()" />
-						</span>
+			<div class="w-full lg:w-1/3 flex flex-col gap-2 justify-start">
+				<div class="md:w-[500px] lg:w-[500px] h-[178px] relative">
+					<a href="@Model.MapUrl">
+						<img class="w-full h-full object-cover rounded transition-all duration-300 hover:scale-105 cursor-pointer"
+							  src="@Model.MapPhoto.Url()" />
 					</a>
 				</div>
-				<br />
-				<span>@Model.MapDescription</span>
+				<p class="mt-[10px] mb-[10px]">@Model.MapDescription</p>
+				<p class="mt-[10px] mb-[8px] font-semibold text-base">Khám phá khu vực</p>
+
+				<div class="flex flex-col gap-3">
+					@foreach (var area in Model.Areas)
+					{
+						<div class="flex justify-between w-full">
+							<span>@area.AreaName</span>
+							<span>@area.Distance km</span>
+						</div>
+					}
+				</div>
+
 			</div>
 		</div>
 	</section>
 </div>
+<!-- Custom Slider -->
+<script>
+	var swiper_thumbs = new Swiper(".nav-for-slider", {
+		loop: true,
+		spaceBetween: 30,
+		slidesPerView: 4,
+	});
+	var swiper = new Swiper(".main-slide-carousel", {
+		slidesPerView: 1,
+		effect: "fade",
+		thumbs: {
+			swiper: swiper_thumbs,
+		},
+	});
+
+	// Get references to elements
+	const gallery = document.querySelector('.gallery');
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImage = document.getElementById('lightbox-image');
+	const closeButton = document.getElementById('close');
+
+	// Add event listener to each image
+	gallery.addEventListener('click', e => {
+		if (e.target.classList.contains('gallery-image')) {
+			const imageSrc = e.target.src;
+			lightboxImage.src = imageSrc;
+			lightbox.style.display = 'flex';
+		}
+	});
+
+	// Close lightbox when close button is clicked
+	closeButton.addEventListener('click', () => {
+		lightbox.style.display = 'none';
+	});
+
+	// Close lightbox when clicking outside the image
+	lightbox.addEventListener('click', e => {
+		if (e.target === lightbox) {
+			lightbox.style.display = 'none';
+		}
+	});
+</script>
 
 <div class="container mb-4" id="rooms">
 	@Html.GetGridHtml(Model, "bodyText", "bootstrap3-rawrow")
-	<!--<div class="hbe-bws"> <section id="hbe-bws-page"><div id="hbe-bws-wrapper"> </div></section></div><link type="text/css" rel="stylesheet" href="https://book.securebookings.net/css/app.css" /><script type="text/javascript" src="https://book.securebookings.net/js/widget.all.js"></script><script type="text/javascript" src="https://book.securebookings.net/widgetCustomize?lang=vi&widgetType=Widget&id=821fb7fa-83b8-1545383631-47bb-a5f9-f4ba6f17f5ef&ajax=true"></script>-->
 </div>
 
-@*<div class="container">
-		<section class="section" id="around">
-			<div class="d-flex flex-wrap justify-content-start" style="gap: 2rem;">
-				<div class="overview-around">
-					<h5>M Village Hotel Tao Đàn Park có gì vui quanh đây?</h5>
-					<p>Một khách sạn có gu tọa lạc tại gần quận 1, hoàn hảo cho những du khách trẻ đang tìm kiếm một kỳ nghỉ sôi động và phong cách.</p>
-				</div>
-				<div class="overview-destination">
-					<div>
-						<h5><i class="fa-solid fa-location-dot"></i> Địa điểm xung quanh</h5>
-					</div>
-					<div>
-						<div class="house-guide__nearby__items-list"><div class="house-guide__nearby__item"><span class="mv-text">Saigon Grill Rooftop Restaurant</span><span class="mv-text">0.65 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">THE WISELANDS Coffee</span><span class="mv-text">1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Bún Ốc Riêu Cua Thanh Hải</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">SOL Kitchen &amp; Bar</span><span class="mv-text">1.4 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Chợ Bến Thành</span><span class="mv-text">1.5 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Phố Đi Bộ Bùi Viện</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">NOIR. Ăn trong bóng tối</span><span class="mv-text">1.7 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Saigon Centre</span><span class="mv-text">2.1 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Acoustic Bar - Ngô Thời Nhiệm</span><span class="mv-text">2.2 km</span></div><div class="house-guide__nearby__item"><span class="mv-text">Vincom Đồng Khởi</span><span class="mv-text">2.2 km</span></div></div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>*@
-
+<!--JAVASCRIPT CODE Tailwind Carousel with pagination fraction-->
+<script>
+	var swiper = new Swiper(".fraction-slide-carousel", {
+		loop: true,
+		fraction: true,
+		navigation: {
+			nextEl: ".fraction-slide-carousel .swiper-button-next",
+			prevEl: ".fraction-slide-carousel .swiper-button-prev",
+		},
+	});
+</script>

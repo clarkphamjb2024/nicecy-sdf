@@ -1,16 +1,45 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Web.PublishedModels;
 
-<section id="portfolio" class="section">
-	<div class="">
-		<div class="section-heading container">
-			<h3 class="heading">Khám phá các Village mới</h3>
-		</div>
-		<div class="container">
-			<div class="owl-two owl-carousel d-flex flex-row justify-content-between" style="justify-content: center;">
-				@Html.GetGridHtml(Model, "nhtBodyText", "bootstrap3-rawrow")
+@{
+	Layout = null;
+	var homePage = (Home)Model.Root();
+	var portfolio_header = homePage.CncHeader;
+	var portfolio_description = homePage.CncDescription;
+	var portfolio_image = homePage.CncBackground.FirstOrDefault().Url();
+}
+@*<section id="portfolio" class="section">
+		<div class="">
+			<div class="section-heading container">
+				<h3 class="heading">Khám phá các Village mới</h3>
+			</div>
+			<div class="container">
+				<div class="owl-two owl-carousel d-flex flex-row justify-content-between" style="justify-content: center;">
+					@Html.GetGridHtml(Model, "nhtBodyText", "bootstrap3-rawrow")
+				</div>
 			</div>
 		</div>
-
+	</section>*@
+<div class="w-full mx-auto items-center justify-center flex relative mb-[70px]">
+	<div class="w-full h-full absolute"></div>
+	<img src="@portfolio_image" alt="Inline CTAs image" class="w-full h-96 object-cover">
+	<div class="absolute flex items-center justify-center px-12 ">
+		<div class="grid lg:gap-7 gap-4">
+			<div class="grid gap-3">
+				<h2 class="text-center text-white text-3xl font-bold font-manrope leading-10">
+					@portfolio_header
+				</h2>
+				<p class="xl:max-w-2xl w-auto mx-auto text-center text-white text-base font-normal leading-relaxed">
+					@portfolio_description
+				</p>
+			</div>
+			<div class="pl-1 pr-1.5 py-1.5 rounded-full border border-orange-300 justify-between items-center inline-flex h-[60px]">
+				<input class="focus:outline-none text-black text-opacity-20 text-base font-normal leading-relaxed rounded-full w-full lg:w-[500px] md:w-[500px] h-full"
+						 placeholder="Nhập Email">
+				<button class="md:px-[70px] lg:px-[70px] px-[10px] py-3 bg-orange-600 hover:bg-orange-700 transition-all duration-500 rounded-full shadow-sm h-[46px] lg:w-1/3 md:w-1/3 w-[170px]">
+					<span class="text-white text-base font-semibold w-full">Đăng ký</span>
+				</button>
+			</div>
+		</div>
 	</div>
-</section>
+</div>

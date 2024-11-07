@@ -46,6 +46,13 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
+		/// HÌNH ẢNH
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("searchHotelImages")]
+		public IEnumerable<Umbraco.Core.Models.MediaWithCrops> SearchHotelImages => this.Value<IEnumerable<Umbraco.Core.Models.MediaWithCrops>>("searchHotelImages");
+
+		///<summary>
 		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]

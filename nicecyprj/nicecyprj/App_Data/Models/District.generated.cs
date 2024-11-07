@@ -46,35 +46,28 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// City ID
+		/// ID THÀNH PHỐ
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("cityId")]
 		public int CityId => this.Value<int>("cityId");
 
 		///<summary>
-		/// District ID
+		/// ID
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("districtId")]
 		public int DistrictId => this.Value<int>("districtId");
 
 		///<summary>
-		/// District Name
+		/// TÊN QUẬN HUYỆN
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("districtName")]
 		public string DistrictName => this.Value<string>("districtName");
 
 		///<summary>
-		/// District Short Name
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("districtShortName")]
-		public string DistrictShortName => this.Value<string>("districtShortName");
-
-		///<summary>
-		/// Featured Hotels
+		/// DANH SÁCH KHÁCH SẠN
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("featuredHotels")]

@@ -1,0 +1,164 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Hotel = Umbraco.Web.PublishedModels.Hotel;
+@using City = Umbraco.Web.PublishedModels.City;
+@using District = Umbraco.Web.PublishedModels.District;
+
+@{
+	var node = Umbraco.Content(Model.Id);
+	var latest_hotels_created = new List<IPublishedContent>();
+
+	var cities = node.Children.Where(c => c.GetType().Name == "City").ToList();
+	foreach (var city in cities)
+	{
+		var city_entry = (City)city;
+
+		if (city_entry.FeaturedDistricts != null)
+		{
+			var districts = city_entry.FeaturedDistricts.ToList();
+
+			foreach (var district in districts)
+			{
+				var district_entry = (District)district;
+
+				if (district_entry.FeaturedHotels != null)
+				{
+					var hotels = district_entry.FeaturedHotels.ToList();
+
+					latest_hotels_created.AddRange(hotels);
+				}
+			}
+		}
+	}
+
+	latest_hotels_created = latest_hotels_created.OrderByDescending(c => c.UpdateDate).Take(4).ToList();
+}
+
+
+<div class="relative top-0 left-0 w-full">
+	<div class="pt-[10px] px-[16px] text-[#282828] flex flex-col items-center text-center leading-[39px] space-y-[16px]">
+		<div class="flex items-center gap-[8px]">
+			<svg width="19" height="36" viewBox="0 0 19 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+				  class="shrink-0">
+				<g>
+					<path d="M0 12.7533C0.0596745 12.4783 0.136528 12.207 0.173599 11.9293C0.207052 11.6795 0.345389 11.6373 0.549729 11.6876C2.66275 12.2052 4.86076 13.9044 5.21519 16.424C5.30561 17.0593 5.18264 17.7234 5.15642 18.4162C3.99186 18.3524 3.02351 18.0298 2.16004 17.4278C0.984629 16.6127 0.235986 15.5192 0.0804702 14.0715C0.0620191 14.0175 0.0348402 13.9668 0 13.9215L0 12.7533Z"
+							fill="currentcolor"></path>
+					<path d="M19.0001 35.0002L18.152 36.0004C17.7759 35.6769 17.4196 35.3839 17.0787 35.0757C13.7686 32.087 10.8771 28.7686 8.82467 24.7815C7.2876 21.7884 6.35361 18.6316 6.28399 15.261C6.24149 13.1943 6.482 11.1482 7.2442 9.19649C7.27042 9.12819 7.3093 9.06439 7.36536 8.95117L8.41599 9.43551C8.15921 10.5255 7.86807 11.558 7.6782 12.6075C7.36626 14.331 7.44493 16.0662 7.73155 17.7852C8.46663 22.1882 10.5778 25.9308 13.3581 29.3499C14.9463 31.2905 16.7095 33.0828 18.6258 34.7046C18.737 34.8008 18.8572 34.8879 19.0001 35.0002Z"
+							fill="currentcolor"></path>
+					<path d="M13.265 7.00879C14.2713 9.51674 13.4648 12.2727 10.8328 13.5685C10.4223 13.7715 9.96212 13.8749 9.53265 14.0429C9.10317 14.2109 8.94675 14.0312 8.85453 13.6368C8.55254 12.3428 8.71529 11.1207 9.3916 9.97502C10.275 8.47618 11.5733 7.51469 13.265 7.00879Z"
+							fill="currentcolor"></path>
+					<path d="M12.6635 13.8984C14.3661 16.8305 12.9954 20.4258 9.42846 21.4465C7.70604 18.8101 9.68705 14.9893 12.6635 13.8984Z"
+							fill="currentcolor"></path>
+					<path d="M14.9594 19.0654C15.8636 20.5463 16.2542 22.1008 15.6122 23.7875C15.0996 25.1354 14.1231 26.0726 12.8536 26.7384C12.4784 26.9352 12.2741 26.8723 12.0905 26.4868C11.1231 24.4524 11.52 22.5879 12.7994 20.8473C13.4404 19.9739 14.2307 19.3602 14.9594 19.0654Z"
+							fill="currentcolor"></path>
+					<path d="M6.2605 31.3167C8.82741 29.9131 12.9911 30.5439 14.1628 33.7528C11.7053 35.5625 7.71891 35.0728 6.2605 31.3167Z"
+							fill="currentcolor"></path>
+					<path d="M16.9141 24.165C19.9439 26.7026 19.2984 30.4965 16.7495 32.3889C14.1691 30.5567 14.5768 26.301 16.9141 24.165Z"
+							fill="currentcolor"></path>
+					<path d="M9.65466 28.8445C7.15557 30.2517 3.11488 29.5329 2.12573 25.4964C4.47293 24.3867 8.89246 25.3715 9.65466 28.8445Z"
+							fill="currentcolor"></path>
+					<path d="M8.25762 7.90126C6.13466 4.98265 7.23321 1.21668 10.4882 0C11.9421 2.34171 11.547 6.59741 8.25762 7.90126Z"
+							fill="currentcolor"></path>
+					<path d="M5.05252 12.8007C2.09954 11.7395 0.452158 8.49561 2.25234 5.28407C2.41961 4.98574 2.57874 4.95339 2.8527 5.1367C4.50098 6.24645 5.58869 7.71024 5.84366 9.71948C5.95724 10.8074 5.67672 11.8999 5.05252 12.8007Z"
+							fill="currentcolor"></path>
+					<path d="M6.86348 24.1164C3.39964 24.7544 0.328216 22.0155 0.723333 18.6647C3.02984 18.2505 7.19621 20.416 6.86348 24.1164Z"
+							fill="currentcolor"></path>
+				</g>
+			</svg>
+			<span class="lg:text-[40px] md:text-[40px] text-[20px] font-semibold leading-[40px]">Khám phá chuỗi Khách Sạn Mới của Nicecy</span>
+			<svg width="19" height="36" viewBox="0 0 19 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+				  class="-scale-x-100 shrink-0">
+				<g>
+					<path d="M0 12.7533C0.0596745 12.4783 0.136528 12.207 0.173599 11.9293C0.207052 11.6795 0.345389 11.6373 0.549729 11.6876C2.66275 12.2052 4.86076 13.9044 5.21519 16.424C5.30561 17.0593 5.18264 17.7234 5.15642 18.4162C3.99186 18.3524 3.02351 18.0298 2.16004 17.4278C0.984629 16.6127 0.235986 15.5192 0.0804702 14.0715C0.0620191 14.0175 0.0348402 13.9668 0 13.9215L0 12.7533Z"
+							fill="currentcolor"></path>
+					<path d="M19.0001 35.0002L18.152 36.0004C17.7759 35.6769 17.4196 35.3839 17.0787 35.0757C13.7686 32.087 10.8771 28.7686 8.82467 24.7815C7.2876 21.7884 6.35361 18.6316 6.28399 15.261C6.24149 13.1943 6.482 11.1482 7.2442 9.19649C7.27042 9.12819 7.3093 9.06439 7.36536 8.95117L8.41599 9.43551C8.15921 10.5255 7.86807 11.558 7.6782 12.6075C7.36626 14.331 7.44493 16.0662 7.73155 17.7852C8.46663 22.1882 10.5778 25.9308 13.3581 29.3499C14.9463 31.2905 16.7095 33.0828 18.6258 34.7046C18.737 34.8008 18.8572 34.8879 19.0001 35.0002Z"
+							fill="currentcolor"></path>
+					<path d="M13.265 7.00879C14.2713 9.51674 13.4648 12.2727 10.8328 13.5685C10.4223 13.7715 9.96212 13.8749 9.53265 14.0429C9.10317 14.2109 8.94675 14.0312 8.85453 13.6368C8.55254 12.3428 8.71529 11.1207 9.3916 9.97502C10.275 8.47618 11.5733 7.51469 13.265 7.00879Z"
+							fill="currentcolor"></path>
+					<path d="M12.6635 13.8984C14.3661 16.8305 12.9954 20.4258 9.42846 21.4465C7.70604 18.8101 9.68705 14.9893 12.6635 13.8984Z"
+							fill="currentcolor"></path>
+					<path d="M14.9594 19.0654C15.8636 20.5463 16.2542 22.1008 15.6122 23.7875C15.0996 25.1354 14.1231 26.0726 12.8536 26.7384C12.4784 26.9352 12.2741 26.8723 12.0905 26.4868C11.1231 24.4524 11.52 22.5879 12.7994 20.8473C13.4404 19.9739 14.2307 19.3602 14.9594 19.0654Z"
+							fill="currentcolor"></path>
+					<path d="M6.2605 31.3167C8.82741 29.9131 12.9911 30.5439 14.1628 33.7528C11.7053 35.5625 7.71891 35.0728 6.2605 31.3167Z"
+							fill="currentcolor"></path>
+					<path d="M16.9141 24.165C19.9439 26.7026 19.2984 30.4965 16.7495 32.3889C14.1691 30.5567 14.5768 26.301 16.9141 24.165Z"
+							fill="currentcolor"></path>
+					<path d="M9.65466 28.8445C7.15557 30.2517 3.11488 29.5329 2.12573 25.4964C4.47293 24.3867 8.89246 25.3715 9.65466 28.8445Z"
+							fill="currentcolor"></path>
+					<path d="M8.25762 7.90126C6.13466 4.98265 7.23321 1.21668 10.4882 0C11.9421 2.34171 11.547 6.59741 8.25762 7.90126Z"
+							fill="currentcolor"></path>
+					<path d="M5.05252 12.8007C2.09954 11.7395 0.452158 8.49561 2.25234 5.28407C2.41961 4.98574 2.57874 4.95339 2.8527 5.1367C4.50098 6.24645 5.58869 7.71024 5.84366 9.71948C5.95724 10.8074 5.67672 11.8999 5.05252 12.8007Z"
+							fill="currentcolor"></path>
+					<path d="M6.86348 24.1164C3.39964 24.7544 0.328216 22.0155 0.723333 18.6647C3.02984 18.2505 7.19621 20.416 6.86348 24.1164Z"
+							fill="currentcolor"></path>
+				</g>
+			</svg>
+		</div>
+	</div>
+	<div class="relative px-[16px] sm:px-[20px] md:px-[40px] pt-[30px]">
+		<div class="swiper multiple-slide-carousel swiper-container relative">
+			<div class="swiper-wrapper mb-16">
+				@if (latest_hotels_created != null && latest_hotels_created.Count > 0)
+				{
+					var random = new Random();
+					foreach (var hotel in latest_hotels_created)
+					{
+						var hotel_entry = (Hotel)hotel;
+						var image_index_random = random.Next(3);
+						var hotel_image = hotel_entry.Photos.ToList()[image_index_random].Url();
+						var hotel_title = hotel_entry.Name;
+						var hotel_short_description = hotel_entry.HotelShortDescription;
+						var hotel_url = hotel_entry.Url();
+
+						<div class="swiper-slide">
+							<div class="h-96 flex justify-center items-center">
+								<div class="relative flex flex-col md:flex-row w-full my-6 bg-white shadow-sm rounded-lg w-[500px] border border-transparent">
+									<div class="relative p-2.5 md:w-[250px] h-[300px] shrink-0 overflow-hidden">
+										<a href="@hotel_url" class="text-xl">
+											<img src="@hotel_image"
+												  alt="card-image"
+												  class="h-full w-full rounded-md md:rounded-lg object-cover transition-all duration-300 hover:scale-110" />
+										</a>
+										
+									</div>
+									<div class="p-2 h-[300px]">
+										<div class="mb-4 rounded-full bg-teal-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+											NICECY
+										</div>
+										<h4 class="mb-2 text-slate-800 text-xl font-semibold">
+											<a href="@hotel_url" class="text-xl">@hotel_title</a>
+										</h4>
+										<p class="mb-8 text-black leading-normal font-light">
+											@hotel_short_description
+										</p>
+										<div>
+											<a href="@hotel_url"
+												class="text-slate-800 font-semibold text-sm hover:text-orange-500 flex items-center text-orange-600">
+												Đặt phòng
+												<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none"
+													  viewBox="0 0 24 24" stroke="currentColor">
+													<path stroke-linecap="round" stroke-linejoin="round"
+															stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+				}
+			</div>
+			<div class="absolute flex justify-center items-center m-auto left-0 right-0 w-fit bottom-3 md:bottom-12 lg:bottom-12">
+				<button id="slider-button-left"
+						  class="text-xs swiper-button-prev group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-6 !h-6 transition-all duration-500 rounded-full  hover:bg-orange-600 !-translate-x-16"
+						  data-carousel-prev>
+				</button>
+				<button id="slider-button-right"
+						  class="text-xs swiper-button-next group !p-2 flex justify-center items-center border border-solid border-indigo-600 !w-6 !h-6 transition-all duration-500 rounded-full hover:bg-orange-600 !translate-x-16"
+						  data-carousel-next>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

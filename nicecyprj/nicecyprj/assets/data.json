@@ -1,0 +1,36 @@
+[
+  {
+    "city": "HCM",
+    "districts": [
+      {
+        "id": 1,
+        "text": "Quận 1"
+      },
+      {
+        "id": 2,
+        "text": "Quận 3"
+      },
+      {
+        "id": 3,
+        "text": "Quận Phú Nhuận"
+      },
+      {
+        "id": 4,
+        "text": "Quận Bình Thạnh"
+      }
+    ]
+  },
+  {
+    "city": "HN",
+    "districts": [
+      {
+        "id": 5,
+        "text": "Hoàn Kiếm"
+      },
+      {
+        "id": 6,
+        "text": "Ba Đình"
+      }
+    ]
+  }
+]

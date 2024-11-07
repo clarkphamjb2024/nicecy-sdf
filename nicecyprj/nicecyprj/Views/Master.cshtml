@@ -1,16 +1,17 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 @{
 	Layout = null;
+	var node = Umbraco.Content(Model.Id);
 }
 
-<html>
 <head>
+	<meta charset="UTF-8">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>@Model.Name</title>
+	<title>@node.Value("pageTitle") </title>
 	<link rel="icon" href="/assets/Nicecy-logo.png" type="image/png">
 
 	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
@@ -20,27 +21,28 @@
 </head>
 
 <body class="bg-cream">
-    
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    <!-- *  *  *  *  Header   *  *  *  *  * -->
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    @Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
+
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	<!-- *  *  *  *  Header   *  *  *  *  * -->
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	@Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
 
 
-    <main>
-        @RenderBody()
-    </main>
-    
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    <!-- *  *  *  *  Footer  *   *   * -->
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    @Html.Partial("~/views/partials/Sections/Footer.cshtml")
-    
+	<main>
+		@RenderBody()
+	</main>
 
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    <!-- *  *  *  *  Javascripts  *   *   * -->
-    <!-- *  *  *  *  *  *  *  *  *  *  *  * -->
-    @Html.Partial("~/Views/Partials/Javascripts.cshtml")
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	<!-- *  *  *  *  Footer  *   *   * -->
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	@Html.Partial("~/views/partials/Sections/Footer.cshtml")
+
+
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	<!-- *  *  *  *  Javascripts  *   *   * -->
+	<!-- *  *  *  *  *  *  *  *  *  *  *  * -->
+	@Html.Partial("~/Views/Partials/Javascripts.cshtml")
+
 
 </body>
 

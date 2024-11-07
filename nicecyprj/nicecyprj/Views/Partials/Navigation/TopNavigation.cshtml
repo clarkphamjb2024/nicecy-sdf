@@ -1,59 +1,387 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
-
+﻿
 @using Umbraco.Core.PropertyEditors
 @inherits UmbracoViewPage
 @{
 	Layout = null;
-	// Get basic design settings from the homepage
 	var home = (Home)Model.Root();
+	var node = Umbraco.Content(home.Id);
+	var hotel_list = new List<IPublishedContent>();
+	var random = new Random();
+	var city_list = node.Children.Where(c => c.GetType().Name == "City").ToList();
+	foreach (var city in city_list)
+	{
+		var city_entry = (City)city;
 
+		if (city_entry.FeaturedDistricts != null)
+		{
+			var districts = city_entry.FeaturedDistricts.ToList();
+
+			foreach (var district in districts)
+			{
+				var district_entry = (District)district;
+
+				if (district_entry.FeaturedHotels != null)
+				{
+					var hotels = district_entry.FeaturedHotels.ToList();
+
+					hotel_list.AddRange(hotels);
+				}
+			}
+		}
+	}
+
+	hotel_list = hotel_list.OrderByDescending(c => c.UpdateDate).ToList();
 }
-<header class="">
-	<nav class="navbar header-nav navbar-expand-lg fixed-top main-header">
-		<div class="container">
-			<a class="navbar-brand me-auto header-logo" href="@home.Url">
-				<span class="header-logo">
-					<img class="logo-w" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo" title="logo"
-						  placeholder="blur">
-					<img class="logo-b" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo" title="logo"
-						  placeholder="blur">
-				</span>
-			</a>
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-				  aria-labelledby="offcanvasNavbarLabel">
-				<div class="offcanvas-header">
-					<a class="navbar-brand me-auto header-logo" href="@home.Url">
-						<span class="header-logo">
-							<img class="logo-w" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo"
-								  placeholder="blur">
-							<img class="logo-b" layout="fill" src="~/assets/Nicecy-logo.png" alt="logo"
-								  placeholder="blur">
-						</span>
-					</a>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="/khach-san">Tất Cả Chi Nhánh</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="/ve-chung-toi">Về Chúng Tôi</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link mx-lg-2" href="#">Liên Hệ</a>
-						</li>
-					</ul>
+
+<style>
+	.select2 {
+		width: 100% !important;
+	}
+
+	.select2-container .select2-selection--single {
+		height: 35px;
+	}
+
+	.select2-selection__choice {
+		margin-bottom: 5px !important
+	}
+
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+		min-height: 30px;
+		height: auto;
+	}
+
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 38px;
+	}
+
+	.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+		font-weight: bold;
+	}
+
+	.daterangepicker .calendar-table table {
+		font-weight: bold;
+	}
+
+	.group2:hover .group2-hover\:visible {
+		visibility: visible;
+	}
+
+	#adultSelect {
+		border: none !important;
+	}
+
+	*:focus {
+		outline: none !important;
+	}
+
+	select {
+		border: none !important;
+		outline: none !important;
+		scroll-behavior: smooth;
+		border-color: transparent !important
+	}
+
+	select__select:focus {
+		border: none !important;
+		outline: none !important;
+	}
+
+	select:focus {
+		border: none !important;
+		outline: none !important;
+		border-color: #ffffff !important
+	}
+
+	select:active {
+		border: none !important;
+		outline: none !important;
+		border-color: #ffffff !important
+	}
+
+	.searchBox {
+		background-color: #282d47;
+		color: white !important;
+	}
+
+	.select2-container--default .select2-selection--multiple .select2-selection__choice {
+		color: black !important;
+	}
+
+	.select2-container--default .select2-search--inline .select2-search__field {
+		height: 32px !important;
+	}
+</style>
+<div class="sticky top-0 z-[50]">
+	<header class="bg-white sticky top-0 z-[5] shadow-sm w-full border-1 block lg:hidden md:hidden">
+		<div class=" flex items-center content-center h-[64px] px-[32px] xl:px-[150px]">
+			<div class="flex-1 flex items-center content-center justify-content-center align-items-center gap-[28px] h-full text-[16px] ">
+				<a class="shrink-0" href="/">
+					<img alt="logo" loading="lazy" width="113" height="32" decoding="async" data-nimg="1"
+						  style="color:transparent" src="/assets/Images/Nicecy.png" />
+				</a>
+				<ul class="flex-1 h-full md:flex gap-[16px]">
+					<li class="w-[160px]">
+						<a class="flex items-center content-center h-full p-[8px] h-full p-[8px] "
+							href="/danh-sach-khach-san/">
+							<span class="hover:text-orange-500 text-text-sm text-uppercase">KHÁCH SẠN</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="">
+				<div class="flex items-center content-center gap-[8px]">
+					<button data-bs-toggle="modal" data-bs-target="#promotionModal" class="text-sm  flex items-center content-center font-think text-white h-[30px] rounded-full px-[10px]
+							whitespace-nowrap bg-orange-600 hover:bg-orange-500">
+						Ưu
+						Đãi
+					</button>
 				</div>
 			</div>
-			@*<a href="#" class="news-tag-button">Mới</a>*@
-			<a href="#" class="login-button"><i class="fa-regular fa-user"></i></i></i></a>
-			<a href="#" class="login-button"><img src="~/assets/vietnam.png" /></i></i></a>
-			<a href="#" class=""><img src="~/assets/united-kingdom.png" /></i></i></a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-					  data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
 		</div>
-	</nav>
-</header>
+	</header>
+	<header class="bg-white sticky top-0 z-[5] shadow-sm w-full border-1">
+		<div class=" flex items-center content-center h-[50px] px-[32px] xl:px-[150px]">
+			<div class="flex-1 flex items-center content-center justify-content-center align-items-center gap-[28px] h-full text-[16px] ">
+				<a class="shrink-0 hidden lg:block md:block" href="/">
+					<img alt="logo" loading="lazy" width="113" height="32" decoding="async" data-nimg="1"
+						  style="color:transparent" src="/assets/Images/Nicecy.png" />
+				</a>
+				<ul class="flex-1 h-full md:flex gap-[16px]">
+					<li class="hidden lg:block md:block w-[230px] ">
+						<div class="relative h-full tems-center content-center w-[230px]">
+							<button type="button" id="flyoutBtn" onclick="showFlyoutMenu()"
+									  class="flyoutBtn inline-flex items-center gap-x-1 text-base text-black hover:text-orange-500"
+									  aria-expanded="false">
+								<span class="flyoutBtn font-semibold text-sm text-uppercase flex items-center justify-center">
+									<span class="hover:text-orange-500 text-text-sm text-uppercase flyoutBtn">DANH SÁCH Chi nhánh &nbsp;</span>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+									</svg>
+
+								</span>
+							</button>
+							<div class="flyoutMenu" id="flyoutMenu">
+								<div class="absolute left-1/2 z-10 mt-[13px] flex w-screen max-w-max -translate-x-1/2 px-4">
+									<div class="w-[300px] flex-auto overflow-hidden rounded-lg bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+										<div class="px-4 py-2">
+											@if (city_list != null && city_list.Any())
+											{
+												foreach (var city in city_list)
+												{
+													var city_entry = (City)city;
+
+													<div class="relative group">
+														<div class="px-2 py-4 rounded-lg p-2 cursor-pointer hover:bg-gray-100">
+															@city_entry.CityName
+														</div>
+														<div class="fixed w-[500px] top-0 left-[300px] hidden group-hover:block bg-white showme rounded-lg">
+															@if (city_entry.FeaturedDistricts != null)
+															{
+																var districts = city_entry.FeaturedDistricts.ToList();
+
+																foreach (var district in districts)
+																{
+																	var district_entry = (District)district;
+
+																	if (district_entry.FeaturedHotels != null)
+																	{
+																		var hotels = district_entry.FeaturedHotels.ToList();
+																		var hotel2 = district_entry.FeaturedHotels.ToList();
+
+																		foreach (var hotel in hotels)
+																		{
+																			var photo_index = random.Next(3);
+																			var hotel_entry = (Hotel)hotel;
+																			var hotel_url = hotel_entry.Url();
+
+																			<div class="flex gap-x-6 rounded-lg p-2 overflow-hidden rounded-lg bg-red text-sm hover:bg-gray-100">
+																				<div>
+																					<a href="@hotel_url" target="_blank"><img src="@hotel_entry.Photos.ToList()[photo_index].Url()" class="w-[35px] h-[35px] rounded" style="background-size:cover" /></a>
+																				</div>
+																				<div>
+																					<a href="@hotel_url" target="_blank" class="font-semibold text-gray-900 text-sm">
+																						@hotel_entry.Name
+																					</a>
+																					<p class="mt-1 text-gray-600">
+																						<a href="@hotel_url" target="_blank" class="font-semibold text-gray-900 text-xs">
+																							@hotel_entry.MapDescription
+																						</a>
+																					</p>
+																				</div>
+																			</div>
+																		}
+																	}
+																}
+															}
+														</div>
+													</div>
+												}
+											}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+
+
+					<li class="flex lex items-center justify-center md:justify-start lg:justify-start content-center lg:mt-0 md:mt-0 py-1.5">
+						<div class="relative flex lex items-center content-center bg-white rounded-full
+								justify-between items-center">
+
+							<a class="flex items-center justify-center h-full p-[8px] h-full p-[8px] cursor-pointer" onclick="showFlyoutSearch()">
+								@*https://heroicons.com/*@
+								<span class="hover:text-orange-500 text-text-sm text-uppercase">TÌM PHÒNG &nbsp;</span>
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+								</svg>
+							</a>
+
+							<!-- Search Room  -->
+							<div class="flyoutSearch" id="flyoutSearch">
+								<div class="absolute left-1/2 z-10 mt-[27px] flex w-screen max-w-max -translate-x-1/2 px-4">
+									<div class="w-screen max-w-md flex-auto overflow-hidden rounded bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+										<div class="px-4 py-2 searchBox">
+											<div class="flex flex-column gap-3">
+												<div>
+													<p class="mt-[10px] mb-[7px]">Chọn Thành Phố</p>
+													<select class="form-select" id="select-city-field" data-placeholder="">
+														<option value=""></option>
+														<option value="HCM">Thành phố Hồ Chí Minh</option>
+													</select>
+													<p class="mt-[10px] mb-[7px]">Chọn Quận</p>
+													<select class="form-select" id="multiple-select-district-field"
+															  data-placeholder="" multiple>
+													</select>
+													<p class="mt-[10px] mb-[7px]">
+														Thời gian lưu trú
+													</p>
+													<input type="text" name="daterange" id="daterangeTextbox"
+															 class="text-sm flex items-center content-center h-[40px] p-[8px] text-center p-[8px] w-full rounded text-black"
+															 value="" />
+
+													<p class="mt-[10px] mb-[7px]">
+														Số lượng khách lưu
+														trú
+													</p>
+													<div class="flex gap-2 items-center justify-between">
+														<span>Người lớn:</span>
+														<select id="adultSelect"
+																  class="w-[100px] h-[40px] text-black text-sm block p-2.5 rounded">
+															<option selected>0</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+														<span>Trẻ em:</span>
+														<select id="countries"
+																  class="w-[100px] h-[40px] text-black text-sm block p-2.5 rounded">
+															<option selected>0</option>
+															<option value="1">1</option>
+															<option value="US">2</option>
+															<option value="CA">3</option>
+															<option value="FR">4</option>
+															<option value="DE">5</option>
+														</select>
+													</div>
+													<div class="w-full flex justify-between">
+														<button class="mt-[30px] text-sm flex text-uppercase items-center content-center font-think text-white
+															h-[36px] rounded-lg px-[20px] whitespace-nowrap bg-gray-500 hover:bg-gray-600 cancelSearchBtn">
+															HỦY
+														</button>
+														<button class="mt-[30px] text-sm flex text-uppercase items-center content-center font-think text-white
+															h-[36px] rounded-lg px-[20px] whitespace-nowrap bg-orange-600 hover:bg-orange-500" onclick="onSearchingAvailableHotels()">
+															TÌM PHÒNG &nbsp;
+
+															<svg id="arrow" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+																<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+															</svg>
+
+															<svg id="loading" class='hidden w-4 h-4 stroke-white font-semibold animate-spin ' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+																<g clip-path='url(#clip0_9023_61563)'>
+																	<path d='M14.6437 2.05426C11.9803 1.2966 9.01686 1.64245 6.50315 3.25548C1.85499 6.23817 0.504864 12.4242 3.48756 17.0724C6.47025 21.7205 12.6563 23.0706 17.3044 20.088C20.4971 18.0393 22.1338 14.4793 21.8792 10.9444' stroke='stroke-current' stroke-width='2' stroke-linecap='round' class='my-path'></path>
+																</g>
+																<defs>
+																	<clipPath id='clip0_9023_61563'>
+																		<rect width='24' height='24' fill='white'></rect>
+																	</clipPath>
+																</defs>
+															</svg>
+
+														</button>
+
+													</div>
+												</div>
+												<hr>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</li>
+					<li class="hidden lg:block md:block w-[200px]">
+						<a class="flex items-center content-center h-full p-[8px] h-full p-[8px] flex items-center justify-center"
+							href="/ve-chung-toi/">
+							<span class="hover:text-orange-500 text-text-sm text-uppercase">VỀ CHÚNG TÔI &nbsp;</span>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+							</svg>
+
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="hidden lg:block md:block">
+				<div class="flex items-center content-center gap-[8px]">
+					<button data-bs-toggle="modal" data-bs-target="#promotionModal" class="flex-row items-center justify-center text-sm hidden md:block lg:block flex font-think text-white h-[35px] rounded-full px-[6px]
+							whitespace-nowrap bg-orange-600 hover:bg-orange-500">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+						</svg>
+					</button>
+					<div class="md:hidden cursor-pointer text-text-level-1">
+						<div class="hamburger-react" aria-expanded="false" role="button"
+							  style="cursor: pointer; height: 48px; position: relative; transition: 0.4s cubic-bezier(0, 0, 0, 1); user-select: none; width: 48px; outline: none; transform: none;"
+							  tabindex="0">
+							<div style="background: currentcolor; height: 2px; left: 13px; position: absolute; border-radius: 9em; width: 22px; top: 16px; transition: 0.4s cubic-bezier(0, 0, 0, 1); transform: none;">
+							</div>
+							<div style="background: currentcolor; height: 2px; left: 13px; position: absolute; border-radius: 9em; width: 22px; top: 23px; transition: 0.4s cubic-bezier(0, 0, 0, 1); transform: none;">
+							</div>
+							<div style="background: currentcolor; height: 2px; left: 13px; position: absolute; border-radius: 9em; width: 22px; top: 30px; transition: 0.4s cubic-bezier(0, 0, 0, 1); transform: none;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+</div>
+
+<!-- Promotion -->
+<div class="modal" id="promotionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content w-full mx-auto items-center justify-center flex relative mt-[300px] md: w-[500px] lg:w-[500px]">
+			<div class="md:w-[500px] lg:w-[500px] h-full absolute"></div>
+			<div class="absolute flex items-center justify-center py-[100px] px-[50px] rounded" style="background-image: url(@home.PromotionPhoto.Url()); background-size:cover">
+				<div class="grid lg:gap-7 gap-4 w-[400px] lg:w-[700px] md:w-[700px] h-[200px]">
+					<div class="grid gap-3">
+						<h2 class="text-center text-white text-3xl font-bold font-manrope leading-10">Nicecy</h2>
+						<p class="xl:max-w-2xl w-auto mx-auto text-center text-white text-base font-normal leading-relaxed">
+							<a target="_blank" href="@home.PromotionUrl" class="text-decoration-underline text-white hover:text-orange-500 text-base">Truy cập ngay</a> để sớm nhận được thông tin khuyến mãi cùng ưu
+							đãi khi
+							đặt phòng.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

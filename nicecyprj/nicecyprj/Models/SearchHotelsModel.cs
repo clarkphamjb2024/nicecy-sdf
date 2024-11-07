@@ -10,9 +10,11 @@ namespace nicecyprj.Models
 		{
 			Data = new List<KSItem>();
 			Cities = new List<CityItem>();
+			Images = new List<string>();
 		}
 		public List<KSItem> Data { get; set; }
 		public List<CityItem> Cities { get; set; }
+		public List<string> Images { get; set; }
 	}
 
 	public class KSItem
@@ -25,6 +27,9 @@ namespace nicecyprj.Models
 		public List<FeaturesModel> Features { get; set; }
 		public string MapPhotoUrl { get; set; }
 		public List<string> ImgUrls { get; set; }
+		public string HTLID { get; set; }
+		public int DistrictID { get; set; }
+		public string DistrictName { get; set; }
 	}
 
 	public class CityItem

@@ -46,105 +46,98 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Hotel Category
+		/// KHU VỰC
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("areas")]
+		public IEnumerable<Area> Areas => this.Value<IEnumerable<Area>>("areas");
+
+		///<summary>
+		/// Tags
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("category")]
 		public IEnumerable<string> Category => this.Value<IEnumerable<string>>("category");
 
 		///<summary>
-		/// Hotel Description
+		/// Thông Tin Mô Tả
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("description")]
 		public string Description => this.Value<string>("description");
 
 		///<summary>
-		/// District ID
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("districtId")]
-		public int DistrictId => this.Value<int>("districtId");
-
-		///<summary>
-		/// Featured Room
+		/// Phòng
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("featuredRooms")]
 		public IEnumerable<IPublishedContent> FeaturedRooms => this.Value<IEnumerable<IPublishedContent>>("featuredRooms");
 
 		///<summary>
-		/// Features
+		/// Tiện Ích
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("features")]
 		public IEnumerable<Feature> Features => this.Value<IEnumerable<Feature>>("features");
 
 		///<summary>
-		/// Hotel ID
+		/// Khách Sạn ID
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("hotelId")]
 		public int HotelId => this.Value<int>("hotelId");
 
 		///<summary>
-		/// Hotel Name
+		/// Khách Sạn ID - Hotel Link
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("hotelId_HTL")]
+		public string HotelId_Htl => this.Value<string>("hotelId_HTL");
+
+		///<summary>
+		/// Tên Khách Sạn
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("hotelName")]
 		public string HotelName => this.Value<string>("hotelName");
 
 		///<summary>
-		/// Hotel Short Details Description
+		/// MÔ TẢ - SHORT
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("hsdDescription")]
-		public string HsdDescription => this.Value<string>("hsdDescription");
+		[ImplementPropertyType("hotelShortDescription")]
+		public string HotelShortDescription => this.Value<string>("hotelShortDescription");
 
 		///<summary>
-		/// Hotel Short Details Photo
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("hsdPicture")]
-		public IEnumerable<Umbraco.Core.Models.MediaWithCrops> HsdPicture => this.Value<IEnumerable<Umbraco.Core.Models.MediaWithCrops>>("hsdPicture");
-
-		///<summary>
-		/// Hotel Short Details Title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("hsdTitle")]
-		public string HsdTitle => this.Value<string>("hsdTitle");
-
-		///<summary>
-		/// IsVisible
+		/// Ẩn/Hiện Khách Sạn
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("isVisible")]
 		public bool IsVisible => this.Value<bool>("isVisible");
 
 		///<summary>
-		/// Hotel Map Description
+		/// Bản Đồ - Mô Tả
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("mapDescription")]
 		public string MapDescription => this.Value<string>("mapDescription");
 
 		///<summary>
-		/// Hotel Map Photo
+		/// Bản Đồ - Hình Ảnh
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("mapPhoto")]
 		public Umbraco.Core.Models.MediaWithCrops MapPhoto => this.Value<Umbraco.Core.Models.MediaWithCrops>("mapPhoto");
 
 		///<summary>
-		/// Hotel Map URL
+		/// Bản Đồ - Liên Kết URL
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("mapURL")]
 		public string MapUrl => this.Value<string>("mapURL");
 
 		///<summary>
-		/// Hotel Photos
+		/// Hình Ảnh
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("photos")]
